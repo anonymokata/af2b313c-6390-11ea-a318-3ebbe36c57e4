@@ -31,6 +31,9 @@ public:
      * @return A vector containing strings representing each line of the file.
      */
     std::vector<std::string> readFileLines();
+
+    ~FileReader() = default;
+
 private:
     std::string _file_path;
     std::ifstream _input_file_object;
