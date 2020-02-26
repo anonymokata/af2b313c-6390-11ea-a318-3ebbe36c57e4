@@ -54,3 +54,16 @@ TEST(FileReadingTests, ReadEmptyFileThrowsException)
     ASSERT_THROW(std::vector<std::string> lines = file_object->readFileLines(), std::runtime_error);
 
 }
+
+TEST(FileReadingTests, ReadFileAtEOFResetsFileCursor)
+{
+    std::shared_ptr<FileReader> file_object;
+    ASSERT_NO_THROW(file_object = std::make_shared<FileReader>(PROVIDED_WORD_SEARCH));
+    std::vector<std::string> first_read_lines;
+    std::vector<std::string> second_read_lines;
+
+    ASSERT_NO_THROW(first_read_lines = file_object->readFileLines());
+    ASSERT_NO_THROW(second_read_lines = file_object->readFileLines());
+
+    ASSERT_EQ(first_read_lines.size(), second_read_lines.size());
+}

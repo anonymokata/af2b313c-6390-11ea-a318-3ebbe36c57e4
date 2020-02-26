@@ -25,6 +25,10 @@ std::vector<std::string> FileReader::readFileLines()
     std::vector<std::string> lines;
     std::string current_line;
 
+    // Reset the file cursor to the beginning of the file.
+    _input_file_object.clear();
+    _input_file_object.seekg(0, std::ios::beg);
+
     if (_input_file_object.peek() == std::ifstream::traits_type::eof())
     {
         throw std::runtime_error("Error: Could read the file: " + _file_path + " the file is empty.");
