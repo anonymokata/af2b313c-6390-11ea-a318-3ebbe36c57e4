@@ -11,7 +11,18 @@
 class FileReader
 {
 public:
-    FileReader(const std::string &file_path);
+    /**
+     * Constructor of a file reader object.
+     *
+     * @note After construction, the file is open assuming no
+     * exception was thrown.
+     *
+     * @param file_path The file path to open. Must be a valid file path on the system.
+     * @throws runtime_exception when file_path is an empty string or the file is not found.
+     * @throws exception When file_path is a nullptr/NULL.
+     */
+    explicit FileReader(const std::string &file_path);
+
 private:
     std::string _file_path;
     std::ifstream _input_file_object;
