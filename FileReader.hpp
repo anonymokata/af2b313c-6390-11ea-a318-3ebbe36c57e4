@@ -23,6 +23,13 @@ public:
      * @throws exception When file_path is a nullptr/NULL.
      */
     explicit FileReader(const std::string &file_path);
+
+    /**
+     * Reads all the lines from a file.
+     *
+     * @throws runtime_error if the file being read is an empty file.
+     * @return A vector containing strings representing each line of the file.
+     */
     std::vector<std::string> readFileLines();
 private:
     std::string _file_path;
