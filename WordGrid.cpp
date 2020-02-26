@@ -14,32 +14,47 @@ WordGrid::WordGrid(const std::vector<std::string> &grid_lines, bool includes_hea
         throw std::logic_error("Error: Grid Line creation failed as the grid is not large enough.");
     }
 
-    for (const std::string &line : grid_lines)
+    if (includes_header_row)
+    {
+        std::vector<std::string> letters_only_grid(grid_lines.begin() + 1, grid_lines.end());
+        _processGrid(letters_only_grid);
+    }
+    else
+    {
+        _processGrid(grid_lines);
+    }
+
+}
+
+void WordGrid::_processGrid(const std::vector<std::string>& grid)
+{
+    for (const std::string &line : grid)
     {
         // Just an easy way of skipping the first row. This could also have
         // been done by incrementing an iterator, instead of C++'s foreach style loop.
-        if (includes_header_row)
-        {
-            includes_header_row = false;
-            continue;
-        }
-
         if (line.empty())
         {
             continue;
         }
-
-        // This looks strange but it's just creating an empty vector<char>, with no size.
-        _2dGrid.emplace_back();
-        for (char token : line)
-        {
-            if (token != ',')
-            {
-                _2dGrid.back().push_back(token);
-            }
-        }
+        _2dGrid.emplace_back(_processLine(line));
     }
 }
+
+
+std::vector<char> WordGrid::_processLine(const std::string& line)
+{
+    std::vector<char> ret;
+    for (char token : line)
+    {
+        if (token != ',')
+        {
+            ret.push_back(token);
+        }
+    }
+
+    return ret;
+}
+
 
 int WordGrid::size()
 {
