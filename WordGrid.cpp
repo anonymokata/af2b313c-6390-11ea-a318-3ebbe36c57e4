@@ -30,8 +30,6 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
 {
     for (const std::string &line : grid)
     {
-        // Just an easy way of skipping the first row. This could also have
-        // been done by incrementing an iterator, instead of C++'s foreach style loop.
         if (line.empty())
         {
             continue;
