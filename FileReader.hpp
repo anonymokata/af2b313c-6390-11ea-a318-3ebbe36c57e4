@@ -7,6 +7,7 @@
 
 #include <string>
 #include <fstream>
+#include <vector>
 
 class FileReader
 {
@@ -22,7 +23,7 @@ public:
      * @throws exception When file_path is a nullptr/NULL.
      */
     explicit FileReader(const std::string &file_path);
-
+    std::vector<std::string> ReadFileLines();
 private:
     std::string _file_path;
     std::ifstream _input_file_object;

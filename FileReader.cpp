@@ -16,7 +16,12 @@ FileReader::FileReader(const std::string &file_path) : _file_path(file_path)
 
     if (!_input_file_object.good())
     {
-        throw std::runtime_error("Cannot open the file: " + file_path + " requested.");
+        throw std::runtime_error("Error: Cannot open the file: " + file_path + " requested.");
     }
 }
 
+std::vector<std::string> FileReader::ReadFileLines()
+{
+    std::vector<std::string> lines;
+    return lines;
+}
