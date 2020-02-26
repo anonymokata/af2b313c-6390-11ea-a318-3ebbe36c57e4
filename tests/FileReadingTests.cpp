@@ -6,7 +6,7 @@
 #include "FileReader.hpp"
 
 #define PROVIDED_WORD_SEARCH "./data/ProvidedWordSearch.txt"
-
+#define MINIMUM_LINES_TO_READ 2
 TEST(FileReadingTests, FileOpensWithoutException)
 {
     std::shared_ptr<FileReader> file_object;
@@ -42,5 +42,5 @@ TEST(FileReadingTests, ReadFileVectorOfLines)
     //
     // In fact, we are guarenteed to need more lines than 2, but further validation will be performed by another
     // object and is outside the scope of this one.
-    ASSERT_GT(lines.size(), 1);
+    ASSERT_GT(lines.size(), MINIMUM_LINES_TO_READ);
 }
