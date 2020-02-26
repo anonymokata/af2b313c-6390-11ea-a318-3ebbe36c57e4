@@ -37,6 +37,10 @@ TEST(FileReadingTests, ReadFileVectorOfLines)
     ASSERT_NO_THROW(file_object = std::make_shared<FileReader>(PROVIDED_WORD_SEARCH));
     std::vector<std::string> lines = file_object->ReadFileLines();
 
-    // Ensure that the number of lines we received is more than zero.
-    ASSERT_NE(lines.size(), 0);
+    // Ensure that the number of lines we received is more than 1. Our file format requires that
+    // We have a line of words, and a grid. Therefore we need at least 2 lines.
+    //
+    // In fact, we are guarenteed to need more lines than 2, but further validation will be performed by another
+    // object and is outside the scope of this one.
+    ASSERT_GT(lines.size(), 1);
 }
