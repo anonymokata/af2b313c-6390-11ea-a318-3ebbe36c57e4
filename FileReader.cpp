@@ -22,6 +22,13 @@ FileReader::FileReader(const std::string &file_path) : _file_path(file_path)
 
 std::vector<std::string> FileReader::ReadFileLines()
 {
-    std::vector<std::string> lines;
+    std::vector<std::string>    lines;
+    std::string                 current_line;
+
+    while(std::getline(_input_file_object, current_line))
+    {
+        lines.push_back(current_line);
+    }
+
     return lines;
 }
