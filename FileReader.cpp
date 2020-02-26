@@ -20,10 +20,15 @@ FileReader::FileReader(const std::string &file_path) : _file_path(file_path)
     }
 }
 
-std::vector<std::string> FileReader::ReadFileLines()
+std::vector<std::string> FileReader::readFileLines()
 {
-    std::vector<std::string>    lines;
-    std::string                 current_line;
+    std::vector<std::string> lines;
+    std::string current_line;
+
+    if (_input_file_object.peek() == std::ifstream::traits_type::eof())
+    {
+        throw std::runtime_error("Error: Could read the file: " + _file_path + " the file is empty.");
+    }
 
     while(std::getline(_input_file_object, current_line))
     {
