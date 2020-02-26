@@ -12,7 +12,9 @@ class WordGrid
 {
 public:
     explicit WordGrid(const std::vector<std::string> &grid_lines);
+    int size();
 private:
+    std::vector<std::vector<char>> _2dGrid;
 };
 
 
