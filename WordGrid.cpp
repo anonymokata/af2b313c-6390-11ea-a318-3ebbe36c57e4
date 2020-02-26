@@ -38,7 +38,6 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
     }
 }
 
-
 std::vector<char> WordGrid::_processLine(const std::string& line)
 {
     std::vector<char> ret;
@@ -52,7 +51,6 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
 
     return ret;
 }
-
 
 int WordGrid::size()
 {

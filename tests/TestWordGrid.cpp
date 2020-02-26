@@ -36,5 +36,4 @@ TEST(WordGridTests, TestParseProvidedWordGrid)
     word_grid = WordGrid(file_lines_without_header, false);
 
     ASSERT_EQ(word_grid.size(), WORD_GRID_ROWS);
-
 }
