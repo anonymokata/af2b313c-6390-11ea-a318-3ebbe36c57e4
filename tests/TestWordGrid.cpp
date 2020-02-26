@@ -28,6 +28,6 @@ TEST(WordGridTests, TestParseProvidedWordGrid)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
-    WordGrid word_grid = WordGrid(file_lines);
+    WordGrid word_grid = WordGrid(file_lines, true);
     ASSERT_EQ(word_grid.size(), WORD_GRID_ROWS);
 }

@@ -11,7 +11,7 @@
 class WordGrid
 {
 public:
-    explicit WordGrid(const std::vector<std::string> &grid_lines);
+    explicit WordGrid(const std::vector<std::string> &grid_lines, bool includes_header_row=false);
     int size();
 private:
     std::vector<std::vector<char>> _2dGrid;
