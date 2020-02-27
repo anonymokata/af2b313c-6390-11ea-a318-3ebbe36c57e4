@@ -55,3 +55,12 @@ TEST(WordGridTests, TestWrongNumberOfColumnsThrowsException)
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
 }
+
+TEST(WordGridTests, TestGridCharactersAreOnlyAThroughZAndComma)
+{
+    FileReader reader("./data/WordSearchWrongCharacters.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
+}

@@ -50,9 +50,17 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
     std::vector<char> ret;
     for (char token : line)
     {
-        if (token != ',')
+        if (token >= 'A' && token <= 'Z')
         {
             ret.push_back(token);
+        }
+        else if (token == ',')
+        {
+            continue;
+        }
+        else
+        {
+            throw std::logic_error("Error: Invalid characters found in the grid.");
         }
     }
 
