@@ -64,3 +64,13 @@ TEST(WordGridTests, TestGridCharactersAreOnlyAThroughZAndComma)
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
 }
+
+TEST(WordGridTests, TestGridMultipleCharactersBetweenDelimitersThrowsException)
+{
+    FileReader reader("./data/WordSearchMultipleCharactersBetweenDelimiters.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
+}
+

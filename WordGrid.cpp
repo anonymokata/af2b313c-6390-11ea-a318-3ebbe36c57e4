@@ -48,19 +48,22 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
 std::vector<char> WordGrid::_processLine(const std::string& line)
 {
     std::vector<char> ret;
+    bool should_be_delim = false;
     for (char token : line)
     {
-        if (token >= 'A' && token <= 'Z')
+        if (token >= 'A' && token <= 'Z' && !should_be_delim)
         {
             ret.push_back(token);
+            should_be_delim = true;
         }
-        else if (token == ',')
+        else if (token == ',' && should_be_delim)
         {
+            should_be_delim = false;
             continue;
         }
         else
         {
-            throw std::logic_error("Error: Invalid characters found in the grid.");
+            throw std::logic_error("Error: Invalid characters or delimiters found out of place in the grid.");
         }
     }
 
