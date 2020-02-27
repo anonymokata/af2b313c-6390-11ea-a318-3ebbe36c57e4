@@ -9,6 +9,8 @@ configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchWrongNumberOfRows.txt ${PROJ
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchWrongNumberOfColumns.txt ${PROJECT_BINARY_DIR}/data/WordSearchWrongNumberOfColumns.txt  COPYONLY)
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchWrongCharacters.txt ${PROJECT_BINARY_DIR}/data/WordSearchWrongCharacters.txt  COPYONLY)
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchMultipleCharactersBetweenDelimiters.txt ${PROJECT_BINARY_DIR}/data/WordSearchMultipleCharactersBetweenDelimiters.txt  COPYONLY)
+configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchMultipleDelimitersBetweenCharacters.txt ${PROJECT_BINARY_DIR}/data/WordSearchMultipleDelimitersBetweenCharacters.txt  COPYONLY)
+
 
 add_executable(run_tests ../FileReader.cpp FileReadingTests.cpp ../WordGrid.cpp ../WordGrid.hpp TestWordGrid.cpp)
 target_link_libraries(run_tests gtest gtest_main)

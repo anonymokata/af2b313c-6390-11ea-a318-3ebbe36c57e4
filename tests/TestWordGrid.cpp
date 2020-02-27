@@ -67,7 +67,7 @@ TEST(WordGridTests, TestGridCharactersAreOnlyAThroughZAndComma)
 
 TEST(WordGridTests, TestGridMultipleCharactersBetweenDelimitersThrowsException)
 {
-    FileReader reader("./data/WordSearchMultipleCharactersBetweenDelimiters.txt");
+    FileReader reader("./data/WordSearchMultipleDelimitersBetweenCharacters.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
 
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
