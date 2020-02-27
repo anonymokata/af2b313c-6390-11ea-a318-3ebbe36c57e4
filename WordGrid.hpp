@@ -29,7 +29,7 @@ public:
      * @return The height and width of the word grid expressed as a single integer.
      */
     int size();
-    
+
 private:
 
     /**

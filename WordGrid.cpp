@@ -30,17 +30,25 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
 {
     for (const std::string &line : grid)
     {
+        // We can recover from this.
         if (line.empty())
         {
             continue;
         }
         _2dGrid.emplace_back(_processLine(line));
     }
+
+    int column_length = _2dGrid.begin()->size();
+    if (column_length != _2dGrid.size())
+    {
+        throw std::logic_error("Error: The grid is not a square.");
+    }
 }
 
 std::vector<char> WordGrid::_processLine(const std::string& line)
 {
     std::vector<char> ret;
+
     for (char token : line)
     {
         if (token != ',')

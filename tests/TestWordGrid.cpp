@@ -15,13 +15,13 @@ TEST(WordGridTests, TestWordGridConstructor)
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
 
-    ASSERT_NO_THROW(WordGrid word_grid = WordGrid(file_lines));
+    ASSERT_NO_THROW(WordGrid word_grid = WordGrid(file_lines, true));
 }
 
 TEST(WordGridTests, TestWordGridThrowsExceptionWhenNoLines)
 {
     std::vector<std::string> empty_lines;
-    ASSERT_THROW(WordGrid word_grid = WordGrid(empty_lines), std::logic_error);
+    ASSERT_THROW(WordGrid word_grid = WordGrid(empty_lines, true), std::logic_error);
 }
 
 TEST(WordGridTests, TestParseProvidedWordGrid)
@@ -36,4 +36,13 @@ TEST(WordGridTests, TestParseProvidedWordGrid)
     word_grid = WordGrid(file_lines_without_header, false);
 
     ASSERT_EQ(word_grid.size(), WORD_GRID_ROWS);
+}
+
+TEST(WordGridTests, TestWrongNumberOfRows)
+{
+    FileReader reader("./data/WordSearchWrongNumberOfRows.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
 }
