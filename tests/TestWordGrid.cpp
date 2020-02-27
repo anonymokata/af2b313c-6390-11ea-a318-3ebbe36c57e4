@@ -9,7 +9,7 @@
 #include "FileReader.hpp"
 
 #define WORD_GRID_ROWS 15
-
+#define WORDS_IN_PROVIDED_WORD_SEARCH 7
 TEST(WordGridTests, TestWordGridConstructor)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
@@ -83,4 +83,15 @@ TEST(WordGridTests, TestSearchWordsProcess)
     ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines, true));
     std::vector<std::string> search_words = grid->getSearchWords();
     ASSERT_GT(search_words.size(), 0);
+    ASSERT_EQ(search_words.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
+
+    ASSERT_STREQ("BONES", search_words.begin()->c_str());
+    ASSERT_STREQ("SCOTTY", search_words[3].c_str());
+
+    file_lines[0] += ",PICARD,WORF";
+    grid = std::make_unique<WordGrid>(file_lines, true);
+    search_words = grid->getSearchWords();
+    ASSERT_EQ(search_words.size(), WORDS_IN_PROVIDED_WORD_SEARCH + 2);
+    ASSERT_STREQ("PICARD", (search_words.end() - 2)->c_str());
+    ASSERT_STREQ("WORF", search_words.back().c_str());
 }

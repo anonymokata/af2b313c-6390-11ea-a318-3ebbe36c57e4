@@ -84,7 +84,20 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
 
 void WordGrid::_processSearchWords(const std::string& wordsLine)
 {
-    _searchWords.push_back(wordsLine);
+    std::string delimiter = ",";
+    std::string token;
+    int next = wordsLine.find(delimiter, 0);
+    int last = 0;
+    while (next != std::string::npos)
+    {
+        token = wordsLine.substr(last, next - last);
+        _searchWords.push_back(token);
+        last = next + 1;
+        next = wordsLine.find(delimiter, last);
+    }
+
+    std::string final_word = wordsLine.substr(last);
+    _searchWords.push_back(final_word);
 }
 
 int WordGrid::size()
