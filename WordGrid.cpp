@@ -48,7 +48,6 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
 std::vector<char> WordGrid::_processLine(const std::string& line)
 {
     std::vector<char> ret;
-
     for (char token : line)
     {
         if (token != ',')
@@ -57,6 +56,17 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
         }
     }
 
+    if (_expectedColumnLength == -1)
+    {
+        // On the first line, record how long it is. We'll expect all other lines to
+        // be the same length.
+        _expectedColumnLength = line.size();
+    }
+    else if (line.size() != _expectedColumnLength)
+    {
+        // In the case that we already have a line length set, and this line doesn't match, raise an exception.
+        throw std::logic_error("Error: Not all columns are the same size.");
+    }
     return ret;
 }
 

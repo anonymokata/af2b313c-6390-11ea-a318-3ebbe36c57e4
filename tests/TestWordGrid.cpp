@@ -38,9 +38,18 @@ TEST(WordGridTests, TestParseProvidedWordGrid)
     ASSERT_EQ(word_grid.size(), WORD_GRID_ROWS);
 }
 
-TEST(WordGridTests, TestWrongNumberOfRows)
+TEST(WordGridTests, TestWrongNumberOfRowsThrowsException)
 {
     FileReader reader("./data/WordSearchWrongNumberOfRows.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);
+    ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
+}
+
+TEST(WordGridTests, TestWrongNumberOfColumnsThrowsException)
+{
+    FileReader reader("./data/WordSearchWrongNumberOfColumns.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
 
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, true), std::logic_error);

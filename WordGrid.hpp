@@ -57,6 +57,8 @@ private:
      * The main 2d grid that is used for processing.
      */
     std::vector<std::vector<char>> _2dGrid;
+
+    int _expectedColumnLength = -1;
 };
 
 
