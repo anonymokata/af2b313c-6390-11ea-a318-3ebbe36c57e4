@@ -74,3 +74,13 @@ TEST(WordGridTests, TestGridMultipleCharactersBetweenDelimitersThrowsException)
     ASSERT_THROW(WordGrid word_grid = WordGrid(file_lines, false), std::logic_error);
 }
 
+TEST(WordGridTests, TestSearchWordsProcess)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid;
+
+    ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines, true));
+    std::vector<std::string> search_words = grid->getSearchWords();
+    ASSERT_GT(search_words.size(), 0);
+}

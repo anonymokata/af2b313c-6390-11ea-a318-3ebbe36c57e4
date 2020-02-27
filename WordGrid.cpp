@@ -18,6 +18,7 @@ WordGrid::WordGrid(const std::vector<std::string> &grid_lines, bool includes_hea
     {
         std::vector<std::string> letters_only_grid(grid_lines.begin() + 1, grid_lines.end());
         _processGrid(letters_only_grid);
+        _processSearchWords(*(grid_lines.begin()));
     }
     else
     {
@@ -81,7 +82,17 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
     return ret;
 }
 
+void WordGrid::_processSearchWords(const std::string& wordsLine)
+{
+    _searchWords.push_back(wordsLine);
+}
+
 int WordGrid::size()
 {
     return _2dGrid.size();
+}
+
+std::vector<std::string> WordGrid::getSearchWords()
+{
+    return _searchWords;
 }

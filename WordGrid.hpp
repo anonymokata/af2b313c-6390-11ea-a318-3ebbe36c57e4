@@ -30,6 +30,8 @@ public:
      */
     int size();
 
+    std::vector<std::string> getSearchWords();
+
 private:
 
     /**
@@ -53,12 +55,19 @@ private:
      */
     std::vector<char> _processLine(const std::string& line);
 
+    void _processSearchWords(const std::string& wordsLine);
+
     /**
      * The main 2d grid that is used for processing.
      */
     std::vector<std::vector<char>> _2dGrid;
 
+    /**
+     * Our processed words that we are seraching for.
+     */
+    std::vector<std::string> _searchWords;
     int _expectedColumnLength = -1;
+
 };
 
 
