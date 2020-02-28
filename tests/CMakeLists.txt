@@ -11,6 +11,6 @@ configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchWrongCharacters.txt ${PROJEC
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchMultipleCharactersBetweenDelimiters.txt ${PROJECT_BINARY_DIR}/data/WordSearchMultipleCharactersBetweenDelimiters.txt  COPYONLY)
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchMultipleDelimitersBetweenCharacters.txt ${PROJECT_BINARY_DIR}/data/WordSearchMultipleDelimitersBetweenCharacters.txt  COPYONLY)
 
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 add_executable(run_tests ../FileReader.cpp FileReadingTests.cpp ../WordGrid.cpp ../WordGrid.hpp TestWordGrid.cpp)
 target_link_libraries(run_tests gtest gtest_main)

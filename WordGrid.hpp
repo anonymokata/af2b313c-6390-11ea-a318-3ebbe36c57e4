@@ -26,10 +26,27 @@ public:
      * .
      * @return The height and width of the word grid expressed as a single integer.
      */
-    int size();
+    unsigned int size();
 
+    /**
+     * Get the words we are searching for.
+     *
+     * @return A vector containing the words we will search for. This may be an empty vector.
+     */
     std::vector<std::string> getSearchWords();
 
+    /**
+     * Add a word to search for.
+     *
+     * @note The word provided must follow the following rules:
+     *  - Must be at least two characters in length
+     *  - Cannot be larger than the height/width of the grid.
+     *  - Must not be a duplicate
+     *
+     * @param new_word The word to add to our list of words to search for.
+     * @throws std::invalid_parameter If the word provided violates the rules above.
+     * @throws std::exception If the word provided is an nullptr.
+     */
     void addWord(const std::string& new_word);
 
 private:
@@ -55,7 +72,13 @@ private:
      */
     std::vector<char> _processLine(const std::string& line);
 
-    void _processSearchWords(const std::string& wordsLine);
+    /**
+     * Parses and stors the words to search for.
+     *
+     * @param wordsLine A string representing the list of words (the first line of the word grid).
+     * @throws Anything that is throwable by addWord(..).
+     */
+    unsigned int _processSearchWords(const std::string& wordsLine);
 
     /**
      * The main 2d grid that is used for processing.
@@ -66,7 +89,7 @@ private:
      * Our processed words that we are seraching for.
      */
     std::vector<std::string> _searchWords;
-    int _expectedColumnLength = -1;
+    unsigned long int _expectedColumnLength = 0;
 
 };
 

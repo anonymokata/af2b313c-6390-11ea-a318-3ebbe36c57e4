@@ -35,8 +35,8 @@ public:
     ~FileReader() = default;
 
 private:
-    std::string _file_path;
-    std::ifstream _input_file_object;
+    std::string _filePath;
+    std::ifstream _inputFileObject;
 
 };
 

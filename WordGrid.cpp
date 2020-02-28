@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include "WordGrid.hpp"
+#include <iostream>
 
 #define MIN_GRID_LINES 2
 
@@ -32,7 +33,7 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
         _2dGrid.emplace_back(_processLine(line));
     }
 
-    int column_length = _2dGrid.begin()->size();
+    unsigned int column_length = _2dGrid.begin()->size();
     if (column_length != _2dGrid.size())
     {
         throw std::logic_error("Error: The grid is not a square.");
@@ -61,7 +62,7 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
         }
     }
 
-    if (_expectedColumnLength == -1)
+    if (_expectedColumnLength == 0)
     {
         // On the first line, record how long it is. We'll expect all other lines to
         // be the same length.
@@ -75,25 +76,40 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
     return ret;
 }
 
-void WordGrid::_processSearchWords(const std::string& wordsLine)
+unsigned int WordGrid::_processSearchWords(const std::string& wordsLine)
 {
     std::string delimiter = ",";
-    std::string token;
-    int next = wordsLine.find(delimiter, 0);
-    int last = 0;
+    std::string token = "";
+    unsigned long int next = wordsLine.find(delimiter, 0);
+    unsigned long int last = 0;
     while (next != std::string::npos)
     {
         token = wordsLine.substr(last, next - last);
-        _searchWords.push_back(token);
         last = next + 1;
         next = wordsLine.find(delimiter, last);
+        try
+        {
+            addWord(token);
+        }
+        catch (std::invalid_argument& ex)
+        {
+            std::cout << "Warning: Invalid word provided: " + token + " check input file." << std::endl;
+            continue;
+        }
     }
 
     std::string final_word = wordsLine.substr(last);
-    _searchWords.push_back(final_word);
+    try
+    {
+        addWord(final_word);
+    }
+    catch (std::invalid_argument& ex)
+    {
+        std::cout << "Warning: The last word on the search-words line is invalid. Is there an extra comma?" << std::endl;
+    }
 }
 
-int WordGrid::size()
+unsigned int WordGrid::size()
 {
     return _2dGrid.size();
 }
