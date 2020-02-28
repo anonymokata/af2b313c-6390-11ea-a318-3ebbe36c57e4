@@ -78,7 +78,7 @@ private:
      * @param wordsLine A string representing the list of words (the first line of the word grid).
      * @throws Anything that is throwable by addWord(..).
      */
-    unsigned int _processSearchWords(const std::string& wordsLine);
+    void _processSearchWords(const std::string& wordsLine);
 
     /**
      * The main 2d grid that is used for processing.

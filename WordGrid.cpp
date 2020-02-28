@@ -76,7 +76,7 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
     return ret;
 }
 
-unsigned int WordGrid::_processSearchWords(const std::string& wordsLine)
+void WordGrid::_processSearchWords(const std::string& wordsLine)
 {
     std::string delimiter = ",";
     std::string token = "";

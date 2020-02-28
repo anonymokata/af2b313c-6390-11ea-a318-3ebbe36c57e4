@@ -109,3 +109,24 @@ TEST(WordGridTests, TestAddSearchWord)
     // Test that a string cannot be larger than the size of the grid
     ASSERT_THROW(grid->addWord("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), std::invalid_argument);
 }
+
+TEST(WordGridTests, TestProcessSearchWordsWithInvalidTokens)
+{
+    FileReader reader("./data/WordSearchInvalidSearchWordsDosCommas.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid = nullptr;
+    ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
+    std::vector<std::string> words = grid->getSearchWords();
+    ASSERT_EQ(words.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
+
+}
+TEST(WordGridTests, TestProcessSearchWordsWithInvalidWordLength)
+{
+    FileReader reader("./data/WordSearchInvalidSearchWordsLength.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid = nullptr;
+    ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
+    std::vector<std::string> words = grid->getSearchWords();
+    ASSERT_EQ(words.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
+}
+
