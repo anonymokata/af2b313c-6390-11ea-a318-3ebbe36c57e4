@@ -114,5 +114,10 @@ void WordGrid::addWord(const std::string& new_word)
         throw std::invalid_argument("Error: The word added with addWord() must be at least two characters in length"
                                     " and fit inside of the grid.");
     }
+    if (new_word.length() > size())
+    {
+        throw std::invalid_argument("Error: The word added with addWord() cannot be larger than the width/height of"
+                                    " the grid. Words cannot wrap around.");
+    }
     _searchWords.push_back(new_word);
 }

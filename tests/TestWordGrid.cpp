@@ -104,4 +104,7 @@ TEST(WordGridTests, TestAddSearchWord)
 
     // Test that a string must be bigger than 1 character.
     ASSERT_THROW(grid->addWord("A"), std::invalid_argument);
+
+    // Test that a string cannot be larger than the size of the grid
+    ASSERT_THROW(grid->addWord("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), std::invalid_argument);
 }
