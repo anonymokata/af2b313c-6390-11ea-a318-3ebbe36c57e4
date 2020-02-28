@@ -105,5 +105,9 @@ std::vector<std::string> WordGrid::getSearchWords()
 
 void WordGrid::addWord(const std::string& new_word)
 {
+    if (new_word.empty())
+    {
+        throw std::invalid_argument("Error: The word added with addWord() cannot be an empty string.");
+    }
     _searchWords.push_back(new_word);
 }

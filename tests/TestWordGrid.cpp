@@ -98,4 +98,6 @@ TEST(WordGridTests, TestAddSearchWord)
     std::vector<std::string> names = grid->getSearchWords();
     auto pos = std::find(names.begin(), names.end(), "PICARD");
     ASSERT_NE(pos, names.end());
+
+    ASSERT_THROW(grid->addWord(""), std::invalid_argument);
 }
