@@ -15,10 +15,8 @@ public:
      * Construct a Word Grid Object.
      *
      * @param grid_lines A vector containing strings from a well formatted word search grid.
-     * @param includes_header_row Defaults to false. When true, we will skip processing the first line in grid_lines.
-     * When false, we will not skip the first line in grid_lines.
      */
-    explicit WordGrid(const std::vector<std::string> &grid_lines, bool includes_header_row=false);
+    explicit WordGrid(const std::vector<std::string> &grid_lines);
 
     /**
      * Gets the size of the grid.

@@ -7,23 +7,16 @@
 
 #define MIN_GRID_LINES 2
 
-WordGrid::WordGrid(const std::vector<std::string> &grid_lines, bool includes_header_row)
+WordGrid::WordGrid(const std::vector<std::string> &grid_lines)
 {
     if (grid_lines.size() < MIN_GRID_LINES)
     {
         throw std::logic_error("Error: Grid Line creation failed as the grid is not large enough.");
     }
 
-    if (includes_header_row)
-    {
-        std::vector<std::string> letters_only_grid(grid_lines.begin() + 1, grid_lines.end());
-        _processGrid(letters_only_grid);
-        _processSearchWords(*(grid_lines.begin()));
-    }
-    else
-    {
-        _processGrid(grid_lines);
-    }
+    std::vector<std::string> letters_only_grid(grid_lines.begin() + 1, grid_lines.end());
+    _processGrid(letters_only_grid);
+    _processSearchWords(*(grid_lines.begin()));
 
 }
 
