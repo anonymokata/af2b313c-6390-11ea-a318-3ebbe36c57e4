@@ -108,6 +108,10 @@ TEST(WordGridTests, TestAddSearchWord)
 
     // Test that a string cannot be larger than the size of the grid
     ASSERT_THROW(grid->addWord("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), std::invalid_argument);
+
+    // Test that a string cannot be duplicated. Note + 1 because of adding PICARD above.
+    ASSERT_THROW(grid->addWord("SPOCK"), std::invalid_argument);
+    ASSERT_EQ(grid->getSearchWords().size(), WORDS_IN_PROVIDED_WORD_SEARCH + 1);
 }
 
 TEST(WordGridTests, TestProcessSearchWordsWithInvalidTokens)
@@ -115,7 +119,11 @@ TEST(WordGridTests, TestProcessSearchWordsWithInvalidTokens)
     FileReader reader("./data/WordSearchInvalidSearchWordsDosCommas.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
     std::unique_ptr<WordGrid> grid = nullptr;
+
+    // Test that we don't get any errors in construction.
     ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
+
+    // Test that after construction we have the right number of words, even if warnings are thrown.
     std::vector<std::string> words = grid->getSearchWords();
     ASSERT_EQ(words.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
 
