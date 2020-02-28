@@ -123,17 +123,25 @@ void WordGrid::addWord(const std::string& new_word)
 {
     if (new_word.empty())
     {
-        throw std::invalid_argument("Error: The word added with addWord() cannot be an empty string.");
+        throw std::invalid_argument("Error: The word provided to addWord() cannot be an empty string.");
     }
     if (new_word.length() < 2)
     {
-        throw std::invalid_argument("Error: The word added with addWord() must be at least two characters in length"
+        throw std::invalid_argument("Error: The word provided to addWord() must be at least two characters in length"
                                     " and fit inside of the grid.");
     }
     if (new_word.length() > size())
     {
-        throw std::invalid_argument("Error: The word added with addWord() cannot be larger than the width/height of"
+        throw std::invalid_argument("Error: The word provided to addWord() cannot be larger than the width/height of"
                                     " the grid. Words cannot wrap around.");
+    }
+
+    for (const std::string& word : _searchWords)
+    {
+        if (word == new_word)
+        {
+            throw std::invalid_argument("Error: The word provided to addWord cannot be added as it is a duplicate.");
+        }
     }
     _searchWords.push_back(new_word);
 }

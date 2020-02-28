@@ -10,6 +10,16 @@
 
 class WordGrid
 {
+    enum class DIRECTIONS {
+        NORTH,
+        NORTH_EAST,
+        EAST,
+        SOUTH_EAST,
+        SOUTH,
+        SOUTH_WEST,
+        WEST,
+        NORTH_WEST,
+    };
 public:
     /**
      * Construct a Word Grid Object.
@@ -49,6 +59,11 @@ public:
      */
     void addWord(const std::string& new_word);
 
+
+    /**
+     * Default destructor.
+     */
+    ~WordGrid() = default;
 private:
 
     /**
