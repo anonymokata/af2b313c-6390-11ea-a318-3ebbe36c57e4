@@ -7,8 +7,8 @@
 
 #define PROVIDED_WORD_SEARCH "./data/ProvidedWordSearch.txt"
 #define EMPTY_FILE "./data/EmptyFile.txt"
-#define MINIMUM_LINES_TO_READ 2
 
+#define MINIMUM_LINES_TO_READ 2
 TEST(FileReadingTests, FileOpensWithoutException)
 {
     std::shared_ptr<FileReader> file_object;

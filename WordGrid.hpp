@@ -30,6 +30,8 @@ public:
 
     std::vector<std::string> getSearchWords();
 
+    void addWord(const std::string& new_word);
+
 private:
 
     /**

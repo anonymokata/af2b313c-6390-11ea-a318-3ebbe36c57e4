@@ -102,3 +102,8 @@ std::vector<std::string> WordGrid::getSearchWords()
 {
     return _searchWords;
 }
+
+void WordGrid::addWord(const std::string& new_word)
+{
+    _searchWords.push_back(new_word);
+}

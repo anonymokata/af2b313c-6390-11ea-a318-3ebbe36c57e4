@@ -5,6 +5,7 @@
 #include "gtest/gtest.h"
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "WordGrid.hpp"
 #include "FileReader.hpp"
 
@@ -86,4 +87,15 @@ TEST(WordGridTests, TestSearchWordsProcess)
     ASSERT_EQ(search_words.size(), WORDS_IN_PROVIDED_WORD_SEARCH + 2);
     ASSERT_STREQ("PICARD", (search_words.end() - 2)->c_str());
     ASSERT_STREQ("WORF", search_words.back().c_str());
+}
+
+TEST(WordGridTests, TestAddSearchWord)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    auto grid = std::make_unique<WordGrid>(file_lines);
+    grid->addWord("PICARD");
+    std::vector<std::string> names = grid->getSearchWords();
+    auto pos = std::find(names.begin(), names.end(), "PICARD");
+    ASSERT_NE(pos, names.end());
 }
