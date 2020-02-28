@@ -109,5 +109,10 @@ void WordGrid::addWord(const std::string& new_word)
     {
         throw std::invalid_argument("Error: The word added with addWord() cannot be an empty string.");
     }
+    if (new_word.length() < 2)
+    {
+        throw std::invalid_argument("Error: The word added with addWord() must be at least two characters in length"
+                                    " and fit inside of the grid.");
+    }
     _searchWords.push_back(new_word);
 }

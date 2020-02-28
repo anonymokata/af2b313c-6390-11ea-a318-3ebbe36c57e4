@@ -99,5 +99,9 @@ TEST(WordGridTests, TestAddSearchWord)
     auto pos = std::find(names.begin(), names.end(), "PICARD");
     ASSERT_NE(pos, names.end());
 
+    // Test an empty string should be invalid.
     ASSERT_THROW(grid->addWord(""), std::invalid_argument);
+
+    // Test that a string must be bigger than 1 character.
+    ASSERT_THROW(grid->addWord("A"), std::invalid_argument);
 }
