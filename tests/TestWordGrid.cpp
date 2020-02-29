@@ -167,5 +167,19 @@ TEST(WordGridTests, TestGetValueOutOfBounds)
         .y = 300,
     };
     ASSERT_THROW(grid->getPoint(p), std::out_of_range);
+    p = {
+        .x = grid->size(),
+        .y = grid->size(),
+    };
+
+    ASSERT_THROW(grid->getPoint(p), std::out_of_range);
+
+    p = {
+        .x = grid->size() - 1,
+        .y = grid->size() - 1,
+    };
+    char value = '\0';
+    ASSERT_NO_THROW(value = grid->getPoint(p));
+    ASSERT_EQ(value, 'B');
 
 }
