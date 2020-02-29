@@ -139,7 +139,7 @@ TEST(WordGridTests, TestProcessSearchWordsWithInvalidWordLength)
     ASSERT_EQ(words.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
 }
 
-TEST(WordGridTests, TestGetGridData)
+TEST(WordGridTests, TestGetGridValueAtPoint)
 {
     FileReader reader("./data/WordSearchInvalidSearchWordsLength.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
@@ -152,5 +152,6 @@ TEST(WordGridTests, TestGetGridData)
     char point_val = grid->getPoint(p);
     ASSERT_EQ(point_val, 'U');
 
-
+    p.x = 1;
+    ASSERT_EQ(grid->getPoint(p), 'L');
 }

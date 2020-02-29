@@ -148,5 +148,5 @@ void WordGrid::addWord(const std::string& new_word)
 
 char WordGrid::getPoint(const Point& p)
 {
-    return 'U';
+    return _2dGrid[p.x][p.y];
 }
