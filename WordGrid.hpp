@@ -6,7 +6,7 @@
 #define WORDSEARCHKATA_WORDGRID_HPP
 #include <vector>
 #include <string>
-
+#include "Point.hpp"
 
 class WordGrid
 {
@@ -59,6 +59,7 @@ public:
      */
     void addWord(const std::string& new_word);
 
+    char getPoint(const Point& p);
 
     /**
      * Default destructor.

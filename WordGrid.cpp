@@ -145,3 +145,8 @@ void WordGrid::addWord(const std::string& new_word)
     }
     _searchWords.push_back(new_word);
 }
+
+char WordGrid::getPoint(const Point& p)
+{
+    return 'U';
+}

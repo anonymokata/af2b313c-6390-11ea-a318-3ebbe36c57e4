@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "WordGrid.hpp"
 #include "FileReader.hpp"
+#include "Point.hpp"
 
 #define WORD_GRID_ROWS 15
 #define WORDS_IN_PROVIDED_WORD_SEARCH 7
@@ -136,4 +137,20 @@ TEST(WordGridTests, TestProcessSearchWordsWithInvalidWordLength)
     ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
     std::vector<std::string> words = grid->getSearchWords();
     ASSERT_EQ(words.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
+}
+
+TEST(WordGridTests, TestGetGridData)
+{
+    FileReader reader("./data/WordSearchInvalidSearchWordsLength.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid = nullptr;
+    ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
+    Point p = {.x = 0,
+               .y= 0
+    };
+
+    char point_val = grid->getPoint(p);
+    ASSERT_EQ(point_val, 'U');
+
+
 }
