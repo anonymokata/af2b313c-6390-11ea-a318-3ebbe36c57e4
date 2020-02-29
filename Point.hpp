@@ -5,9 +5,16 @@
 #ifndef WORDSEARCHKATA_POINT_HPP
 #define WORDSEARCHKATA_POINT_HPP
 
-struct Point {
+class Point {
+public:
+    Point(unsigned int x, unsigned int y);
+    ~Point() = default;
+
     unsigned int x;
     unsigned int y;
+
+private:
+
 };
 
 #endif //WORDSEARCHKATA_POINT_HPP

@@ -145,10 +145,7 @@ TEST(WordGridTests, TestGetGridValueAtPoint)
     std::vector<std::string> file_lines = reader.readFileLines();
     std::unique_ptr<WordGrid> grid = nullptr;
     ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
-    Point p = {
-        .x = 0,
-        .y= 0
-    };
+    Point p(0, 0);
 
     char point_val = grid->getPoint(p);
     ASSERT_EQ(point_val, 'U');
@@ -162,22 +159,13 @@ TEST(WordGridTests, TestGetValueOutOfBounds)
     std::vector<std::string> file_lines = reader.readFileLines();
     std::unique_ptr<WordGrid> grid = nullptr;
     ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
-    Point p = {
-        .x = 300,
-        .y = 300,
-    };
+    Point p(300, 300);
     ASSERT_THROW(grid->getPoint(p), std::out_of_range);
-    p = {
-        .x = grid->size(),
-        .y = grid->size(),
-    };
+    p = Point(grid->size(), grid->size());
 
     ASSERT_THROW(grid->getPoint(p), std::out_of_range);
 
-    p = {
-        .x = grid->size() - 1,
-        .y = grid->size() - 1,
-    };
+    p = Point(grid->size() - 1, grid->size() - 1);
     char value = '\0';
     ASSERT_NO_THROW(value = grid->getPoint(p));
     ASSERT_EQ(value, 'B');
@@ -190,10 +178,7 @@ TEST(WordGridTests, GetSurroundingValuesByPoint)
     std::vector<std::string> file_lines = reader.readFileLines();
     std::unique_ptr<WordGrid> grid = std::make_unique<WordGrid>(file_lines);
 
-    Point p {
-        .x = 5,
-        .y = 5
-    };
+    Point p(5, 5);
 
     std::vector<char> surrounding_values = grid->getNearby(p);
     ASSERT_EQ(surrounding_values.size(), 8);
