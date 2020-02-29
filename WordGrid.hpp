@@ -59,6 +59,17 @@ public:
      */
     void addWord(const std::string& new_word);
 
+    /**
+     * Gets a specific point in the grid.
+     *
+     * This assumes that the top left of the grid is x: 0, y: 0.
+     * Additionally and following typical convention, x refers to the column and y refers to the
+     * row.
+     *
+     * @param p The point to get in the grid, x, y.
+     * @return The value at the point provided.
+     * @throws out_of_bounds if p contains an invalid x or y value.
+     */
     char getPoint(const Point& p);
 
     /**
