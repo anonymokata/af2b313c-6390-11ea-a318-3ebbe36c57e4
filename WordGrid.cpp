@@ -159,3 +159,8 @@ char WordGrid::getPoint(const Point& p)
 
     return _2dGrid[p.x][p.y];
 }
+
+std::vector<char> WordGrid::getNearby(const Point& p)
+{
+    return std::vector<char>(8, '\0');
+}

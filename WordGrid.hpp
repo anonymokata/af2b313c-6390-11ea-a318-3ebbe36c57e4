@@ -72,6 +72,8 @@ public:
      */
     char getPoint(const Point& p);
 
+    std::vector<char> getNearby(const Point& p);
+
     /**
      * Default destructor.
      */
