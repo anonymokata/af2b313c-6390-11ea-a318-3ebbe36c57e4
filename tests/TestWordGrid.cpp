@@ -145,13 +145,27 @@ TEST(WordGridTests, TestGetGridValueAtPoint)
     std::vector<std::string> file_lines = reader.readFileLines();
     std::unique_ptr<WordGrid> grid = nullptr;
     ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
-    Point p = {.x = 0,
-               .y= 0
+    Point p = {
+        .x = 0,
+        .y= 0
     };
 
     char point_val = grid->getPoint(p);
     ASSERT_EQ(point_val, 'U');
-
     p.x = 1;
     ASSERT_EQ(grid->getPoint(p), 'L');
+}
+
+TEST(WordGridTests, TestGetValueOutOfBounds)
+{
+    FileReader reader("./data/WordSearchInvalidSearchWordsLength.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid = nullptr;
+    ASSERT_NO_THROW(grid = std::make_unique<WordGrid>(file_lines));
+    Point p = {
+        .x = 300,
+        .y = 300,
+    };
+    ASSERT_THROW(grid->getPoint(p), std::out_of_range);
+
 }

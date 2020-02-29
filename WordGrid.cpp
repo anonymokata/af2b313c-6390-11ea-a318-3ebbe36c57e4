@@ -148,5 +148,14 @@ void WordGrid::addWord(const std::string& new_word)
 
 char WordGrid::getPoint(const Point& p)
 {
+    if (p.x > _2dGrid.size() - 1)
+    {
+        throw std::out_of_range("Error: Attempt to access a point (x) that is out of the bounds of the word search grid.");
+    }
+    if (p.y > _2dGrid[0].size())
+    {
+        throw std::out_of_range("Error: Attempt to access a point (y) that is out of the bounds of the word search grid.");
+    }
+
     return _2dGrid[p.x][p.y];
 }
