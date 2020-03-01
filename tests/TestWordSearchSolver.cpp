@@ -38,3 +38,25 @@ TEST(TestWordSearchSolver, TestWordSarchNaieveFindForwardInDirectionGivenStart)
     ASSERT_TRUE(kahn_points[3] == Point(5,6));
 
 }
+
+TEST(TestWordSeachSolver, TestWordSearchNieveFindWrongStart)
+{
+    FileReader fileReader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> lines = fileReader.readFileLines();
+    WordGrid grid(lines);
+    WordSearchSolver solver(grid);
+
+    std::vector<Point> bones_points = solver.findWordInDirection("BONES", Point(0, 0), Direction::south);
+    ASSERT_EQ(bones_points.size(), 0);
+}
+
+TEST(TestWordSearchSolver, TestWordSearchGoodStartWrongDirectionOutOfRange)
+{
+    FileReader fileReader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> lines = fileReader.readFileLines();
+    WordGrid grid(lines);
+    WordSearchSolver solver(grid);
+
+    std::vector<Point> bones_points = solver.findWordInDirection("BONES", Point(0, 5), Direction::west);
+    ASSERT_EQ(bones_points.size(), 0);
+}
