@@ -6,5 +6,8 @@
 
 TEST(PointTests, TestPointConstructor)
 {
-    ASSERT_NO_THROW(Point p(5, 2));
+    std::unique_ptr<Point> p = nullptr;
+    ASSERT_NO_THROW(p = std::make_unique<Point>(5, 2));
+    ASSERT_EQ(p->x, 5);
+    ASSERT_EQ(p->y, 2);
 }
