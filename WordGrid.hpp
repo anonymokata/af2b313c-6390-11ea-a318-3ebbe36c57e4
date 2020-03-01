@@ -70,7 +70,7 @@ public:
      * @return The value at the point provided.
      * @throws out_of_bounds if p contains an invalid x or y value.
      */
-    char getPoint(const Point& p);
+    char getPoint(Point& p);
 
     std::vector<char> getNearby(const Point& p);
 

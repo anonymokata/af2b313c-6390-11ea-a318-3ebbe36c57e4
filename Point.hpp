@@ -10,14 +10,37 @@ public:
     Point(unsigned int x, unsigned int y);
     ~Point() = default;
 
+    /**
+     * Gets The X coordinate of the Point.
+     *
+     * @return An unsigned integer representing the X coordinate of the Point.
+     */
     unsigned int getX();
+
+    /**
+     * Gets the Y coordinate of the Point.
+     *
+     * @return An unsigned integer representing the Y coordinate of the Point.
+     */
     unsigned int getY();
 
-    unsigned int x;
-    unsigned int y;
+    /**
+     * Set the X value.
+     *
+     * @param new_x The new x value this Point should have.
+     */
+    void setX(unsigned int new_x);
+
+    /**
+     * Set the Y value
+     *
+     * @param new_y The new y value this Point should have.
+     */
+    void setY(unsigned int new_y);
 
 private:
-
+    unsigned int x;
+    unsigned int y;
 };
 
 #endif //WORDSEARCHKATA_POINT_HPP

@@ -149,7 +149,7 @@ TEST(WordGridTests, TestGetGridValueAtPoint)
 
     char point_val = grid->getPoint(p);
     ASSERT_EQ(point_val, 'U');
-    p.x = 1;
+    p.setX(1);
     ASSERT_EQ(grid->getPoint(p), 'L');
 }
 

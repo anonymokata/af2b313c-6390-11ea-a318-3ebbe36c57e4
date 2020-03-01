@@ -13,3 +13,13 @@ unsigned int Point::getY()
 {
     return y;
 }
+
+void Point::setX(unsigned int new_x)
+{
+    x = new_x;
+}
+
+void Point::setY(unsigned int new_y)
+{
+    y = new_y;
+}
