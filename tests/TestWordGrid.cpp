@@ -172,14 +172,3 @@ TEST(WordGridTests, TestGetValueOutOfBounds)
 
 }
 
-TEST(WordGridTests, GetSurroundingValuesByPoint)
-{
-    FileReader reader("./data/ProvidedWordSearch.txt");
-    std::vector<std::string> file_lines = reader.readFileLines();
-    std::unique_ptr<WordGrid> grid = std::make_unique<WordGrid>(file_lines);
-
-    Point p(5, 5);
-
-    std::vector<char> surrounding_values = grid->getNearby(p);
-    ASSERT_EQ(surrounding_values.size(), 8);
-}

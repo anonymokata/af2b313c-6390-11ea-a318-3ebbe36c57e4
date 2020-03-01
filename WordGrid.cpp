@@ -8,6 +8,8 @@
 
 #define MIN_GRID_LINES 2
 
+
+
 WordGrid::WordGrid(const std::vector<std::string> &grid_lines)
 {
     if (grid_lines.size() < MIN_GRID_LINES)
