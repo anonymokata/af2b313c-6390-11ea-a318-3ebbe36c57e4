@@ -14,5 +14,15 @@ configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchInvalidSearchWordsDosCommas.
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchInvalidSearchWordsLength.txt ${PROJECT_BINARY_DIR}/data/WordSearchInvalidSearchWordsLength.txt  COPYONLY)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
-add_executable(run_tests ../FileReader.cpp FileReadingTests.cpp ../WordGrid.cpp ../Point.cpp ../Direction.cpp TestWordGrid.cpp TestPoint.cpp TestDirections.cpp)
+
+set(SOURCE_FILES
+        ../FileReader.cpp
+        ../WordGrid.cpp
+        ../Point.cpp
+        ../Direction.cpp
+        ../WordSearchSolver.cpp)
+
+set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestWordSearchSolver.cpp FileReadingTests.cpp)
+
+add_executable(run_tests ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(run_tests gtest gtest_main)
