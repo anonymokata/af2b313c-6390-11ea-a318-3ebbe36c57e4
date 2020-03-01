@@ -15,14 +15,14 @@ public:
      *
      * @return An unsigned integer representing the X coordinate of the Point.
      */
-    unsigned int getX();
+    unsigned int getX() const;
 
     /**
      * Gets the Y coordinate of the Point.
      *
      * @return An unsigned integer representing the Y coordinate of the Point.
      */
-    unsigned int getY();
+    unsigned int getY() const;
 
     /**
      * Set the X value.
@@ -37,6 +37,9 @@ public:
      * @param new_y The new y value this Point should have.
      */
     void setY(unsigned int new_y);
+
+    Point operator+(const Point& other);
+
 
 private:
     unsigned int x;

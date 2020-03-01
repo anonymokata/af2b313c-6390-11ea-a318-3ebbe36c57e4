@@ -47,3 +47,20 @@ TEST(PointTests, TestPointSetterXandY)
     ASSERT_EQ(p->getX(), 12);
     ASSERT_EQ(p->getY(), 44);
 }
+
+/**
+ * Test some simple addition of points using the overloaded operator.
+ */
+TEST(PointTests, TestPointAddition)
+{
+    Point a(1, 1);
+    Point b(2, 2);
+    Point z(0, 0);
+    Point c = a + b;
+    ASSERT_EQ(c.getX(), 3);
+    ASSERT_EQ(c.getY(), 3);
+
+    c = a + z;
+    ASSERT_EQ(c.getX(), 1);
+    ASSERT_EQ(c.getY(), 1);
+}
