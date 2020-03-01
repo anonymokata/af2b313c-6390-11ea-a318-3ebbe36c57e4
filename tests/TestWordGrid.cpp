@@ -14,12 +14,15 @@
 #define WORD_GRID_ROWS 15
 #define WORDS_IN_PROVIDED_WORD_SEARCH 7
 
+
 TEST(WordGridTests, TestWordGridConstructor)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
     std::unique_ptr<WordGrid> word_grid = nullptr;
-    word_grid = std::make_unique<WordGrid>(file_lines);
+    ASSERT_NO_THROW(word_grid = std::make_unique<WordGrid>(file_lines));
+    ASSERT_EQ(word_grid->size(), WORD_GRID_ROWS);
+    ASSERT_EQ(word_grid->getSearchWords().size(), WORDS_IN_PROVIDED_WORD_SEARCH);
 }
 
 TEST(WordGridTests, TestWordGridThrowsExceptionWhenNoLines)
