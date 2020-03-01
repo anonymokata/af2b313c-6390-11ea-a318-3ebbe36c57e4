@@ -74,3 +74,17 @@ TEST(PointTests, TestPointAdditionAndAssignment)
     ASSERT_EQ(a.getX(), 6);
     ASSERT_EQ(a.getY(), 6);
 }
+
+TEST(PointTests, TestPointEqualityOperatorOverride)
+{
+    Point a(1, 1);
+    Point b(5, 5);
+    Point c = a;
+    Point d = b;
+    // For some reason GTest really doesn't like to use 'a' and 'c' in an
+    // ASSERT_EQ.
+    ASSERT_TRUE(a == c);
+    ASSERT_FALSE(a == d);
+
+
+}
