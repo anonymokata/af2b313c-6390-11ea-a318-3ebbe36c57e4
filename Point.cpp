@@ -43,3 +43,4 @@ bool Point::operator==(const Point& rhs)
 {
     return (rhs.x == this->x && rhs.y == this->y);
 }
+

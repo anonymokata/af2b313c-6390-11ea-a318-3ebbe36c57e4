@@ -86,5 +86,4 @@ TEST(PointTests, TestPointEqualityOperatorOverride)
     ASSERT_TRUE(a == c);
     ASSERT_FALSE(a == d);
 
-
 }
