@@ -87,3 +87,16 @@ TEST(PointTests, TestPointEqualityOperatorOverride)
     ASSERT_FALSE(a == d);
 
 }
+
+TEST(PointTests, TestPointNotEqualOperatorOverride)
+{
+    Point a(1, 1);
+    Point b(5, 5);
+    Point c = a;
+    Point d = b;
+    // For some reason GTest really doesn't like to use 'a' and 'c' in an
+    // ASSERT_EQ.
+    ASSERT_FALSE(a != c);
+    ASSERT_TRUE(a != d);
+
+}

@@ -73,6 +73,15 @@ public:
      */
     bool operator==(const Point& rhs);
 
+    /**
+     * Compare two points for inequality.
+     *
+     * @param rhs The right hand side of the inequality.
+     * @return True of the two points are not equal. False if they are equal.
+     */
+    bool operator!=(const Point& rhs);
+
+
 private:
     unsigned int x;
     unsigned int y;
