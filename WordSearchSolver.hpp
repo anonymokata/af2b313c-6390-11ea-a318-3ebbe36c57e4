@@ -6,11 +6,14 @@
 #define WORDSEARCHKATA_WORDSEARCHSOLVER_HPP
 
 #include "WordGrid.hpp"
+#include "Point.hpp"
+#include <tuple>
 
 class WordSearchSolver
 {
 public:
     explicit WordSearchSolver(const WordGrid& grid);
+    std::vector<std::tuple<std::string, std::vector<Point>>> naiveSearch();
     ~WordSearchSolver() = default;
 private:
     WordGrid _grid;
