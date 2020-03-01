@@ -146,7 +146,7 @@ void WordGrid::addWord(const std::string& new_word)
     _searchWords.push_back(new_word);
 }
 
-char WordGrid::getPoint(Point& p)
+char WordGrid::getPoint(const Point& p)
 {
 
     // These static casts look strange, but we are assessing that the X or Y value are above zero
