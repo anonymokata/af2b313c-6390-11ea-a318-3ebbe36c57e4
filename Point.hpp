@@ -10,6 +10,7 @@ public:
     Point(unsigned int x, unsigned int y);
     ~Point() = default;
 
+    unsigned int getX();
     unsigned int x;
     unsigned int y;
 
