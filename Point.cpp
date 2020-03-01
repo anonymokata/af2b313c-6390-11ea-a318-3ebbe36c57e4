@@ -8,3 +8,8 @@ unsigned int Point::getX()
 {
     return x;
 }
+
+unsigned int Point::getY()
+{
+    return y;
+}

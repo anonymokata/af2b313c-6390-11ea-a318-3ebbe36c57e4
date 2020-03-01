@@ -11,6 +11,8 @@ public:
     ~Point() = default;
 
     unsigned int getX();
+    unsigned int getY();
+
     unsigned int x;
     unsigned int y;
 

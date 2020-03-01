@@ -17,5 +17,7 @@ TEST(PointTests, TestPointGetter)
     std::unique_ptr<Point> p = nullptr;
     ASSERT_NO_THROW(p = std::make_unique<Point>(5, 2));
     ASSERT_EQ(p->getX(), 5);
+    ASSERT_EQ(p->getY(), 2);
+
 
 }
