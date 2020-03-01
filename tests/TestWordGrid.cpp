@@ -9,6 +9,7 @@
 #include "WordGrid.hpp"
 #include "FileReader.hpp"
 #include "Point.hpp"
+#include "Direction.hpp"
 
 #define WORD_GRID_ROWS 15
 #define WORDS_IN_PROVIDED_WORD_SEARCH 7
@@ -150,7 +151,7 @@ TEST(WordGridTests, TestGetGridValueAtPoint)
     char point_val = grid->getPoint(p);
     ASSERT_EQ(point_val, 'U');
     p.setX(1);
-    ASSERT_EQ(grid->getPoint(p), 'L');
+    ASSERT_EQ(grid->getPoint(p), 'M');
 }
 
 TEST(WordGridTests, TestGetValueOutOfBounds)
@@ -170,5 +171,46 @@ TEST(WordGridTests, TestGetValueOutOfBounds)
     ASSERT_NO_THROW(value = grid->getPoint(p));
     ASSERT_EQ(value, 'B');
 
+    p = Point(-1, -5);
+    ASSERT_THROW(grid->getPoint(p), std::out_of_range);
+
 }
 
+
+
+TEST(WordGridTests, TestDirectionToPointOffset)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid = std::make_unique<WordGrid>(file_lines);
+
+    Direction dir = Direction::south;
+
+    Point p(5, 5);
+    ASSERT_EQ(grid->getPoint(p), 'Y');
+
+    p += grid->directionToOffset(dir);
+    EXPECT_EQ(p.getX(), 5);
+    EXPECT_EQ(p.getY(), 6);
+    ASSERT_EQ(grid->getPoint(p), 'N');
+}
+
+TEST(WordGridTests, GetSurroundingValuesByPoint)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    std::unique_ptr<WordGrid> grid = std::make_unique<WordGrid>(file_lines);
+
+    Point p(5, 5);
+
+    char known_nearby_values[] = {'C', 'I', 'K', 'E', 'N', 'L', 'T', 'G'};
+    ASSERT_EQ(grid->getPoint(p), 'Y');
+    std::vector<char> surrounding_values = grid->getNearby(p);
+    ASSERT_EQ(surrounding_values.size(), 8);
+
+    for(Direction d = Direction::north; d < Direction::direction_max; ++d)
+    {
+        ASSERT_EQ(known_nearby_values[static_cast<int>(d)], surrounding_values[static_cast<int>(d)]);
+    }
+
+}

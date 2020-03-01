@@ -3,12 +3,10 @@
 //
 
 #include <stdexcept>
-#include "WordGrid.hpp"
 #include <iostream>
+#include "WordGrid.hpp"
 
 #define MIN_GRID_LINES 2
-
-
 
 WordGrid::WordGrid(const std::vector<std::string> &grid_lines)
 {
@@ -150,19 +148,67 @@ void WordGrid::addWord(const std::string& new_word)
 
 char WordGrid::getPoint(Point& p)
 {
-    if (p.getX() > _2dGrid.size() - 1)
+
+    // These static casts look strange, but we are assessing that the X or Y value are above zero
+    // to begin with. Therefore if the second part of the expression involving the static cast
+    // gets executed, we are assured we are only dealing with positive values.
+    if (p.getX() < 0 || static_cast<unsigned int>(p.getX()) > _2dGrid.size() - 1)
     {
         throw std::out_of_range("Error: Attempt to access a point (x) that is out of the bounds of the word search grid.");
     }
-    if (p.getY() > _2dGrid[0].size())
+    if (p.getY() < 0 || static_cast<unsigned int>(p.getY()) > _2dGrid[0].size())
     {
         throw std::out_of_range("Error: Attempt to access a point (y) that is out of the bounds of the word search grid.");
     }
 
-    return _2dGrid[p.getX()][p.getY()];
+    return _2dGrid[p.getY()][p.getX()];
+}
+
+Point WordGrid::directionToOffset(Direction dir)
+{
+    switch(dir)
+    {
+        case Direction::north:
+            return Point(0, -1);
+        case Direction::north_east:
+            return Point(1, -1);
+        case Direction::east:
+            return Point(1, 0);
+        case Direction::south_east:
+            return Point(1, 1);
+        case Direction::south:
+            return Point(0, 1);
+        case Direction::south_west:
+            return Point(-1, 1);
+        case Direction::west:
+            return Point(-1, 0);
+        case Direction::north_west:
+            return Point(-1, -1);
+        case Direction::direction_max:
+            return Point(0, 0);
+    }
+    // Unnecessary, but G++ complains about reaching the end of a non-void function.
+    return Point(0, 0);
 }
 
 std::vector<char> WordGrid::getNearby(const Point& p)
 {
-    return std::vector<char>(8, '\0');
+    std::vector<char> nearby_values;
+
+    for (Direction dir = Direction::north; dir < Direction::direction_max; ++dir)
+    {
+        Point offset = directionToOffset(dir);
+        Point combined_point = offset + p;
+        try
+        {
+            char value = getPoint(combined_point);
+            nearby_values.push_back(value);
+        }
+        catch (std::out_of_range& ex)
+        {
+            nearby_values.push_back('\0');
+        }
+    }
+
+    return nearby_values;
 }

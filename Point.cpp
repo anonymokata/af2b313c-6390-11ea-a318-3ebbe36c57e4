@@ -4,22 +4,22 @@ Point::Point(unsigned int x, unsigned int y) : x(x), y(y)
 {
 }
 
-unsigned int Point::getX() const
+int Point::getX() const
 {
     return x;
 }
 
-unsigned int Point::getY() const
+int Point::getY() const
 {
     return y;
 }
 
-void Point::setX(unsigned int new_x)
+void Point::setX(int new_x)
 {
     x = new_x;
 }
 
-void Point::setY(unsigned int new_y)
+void Point::setY(int new_y)
 {
     y = new_y;
 }
@@ -28,7 +28,7 @@ Point Point::operator+(const Point& rhs)
 {
     Point res(x, y);
     res.setX(rhs.x + this->x);
-    res.setY(rhs.x + this->y);
+    res.setY(rhs.y + this->y);
     return res;
 }
 

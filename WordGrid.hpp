@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include "Point.hpp"
+#include "Direction.hpp"
 
 class WordGrid
 {
@@ -67,6 +68,8 @@ public:
     char getPoint(Point& p);
 
     std::vector<char> getNearby(const Point& p);
+
+    Point directionToOffset(Direction dir);
 
     /**
      * Default destructor.

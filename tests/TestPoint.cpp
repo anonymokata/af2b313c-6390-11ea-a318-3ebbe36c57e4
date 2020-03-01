@@ -53,16 +53,16 @@ TEST(PointTests, TestPointSetterXandY)
  */
 TEST(PointTests, TestPointAddition)
 {
-    Point a(1, 1);
-    Point b(2, 2);
+    Point a(3, 5);
+    Point b(10, 11);
     Point z(0, 0);
     Point c = a + b;
-    ASSERT_EQ(c.getX(), 3);
-    ASSERT_EQ(c.getY(), 3);
+    ASSERT_EQ(c.getX(), 13);
+    ASSERT_EQ(c.getY(), 16);
 
     c = a + z;
-    ASSERT_EQ(c.getX(), 1);
-    ASSERT_EQ(c.getY(), 1);
+    ASSERT_EQ(c.getX(), 3);
+    ASSERT_EQ(c.getY(), 5);
 }
 
 TEST(PointTests, TestPointAdditionAndAssignment)

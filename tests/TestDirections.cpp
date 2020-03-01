@@ -1,44 +1,44 @@
-#include "Directions.hpp"
+#include "Direction.hpp"
 #include "gtest/gtest.h"
 
 TEST(DirectionTest, TestDirectionsIncrement)
 {
-    Directions dir = Directions::north;
+    Direction dir = Direction::north;
     for (int i = 0; i < 9; i++)
     {
         switch(i)
         {
             case 0:
-                ASSERT_EQ(dir, Directions::north);
+                ASSERT_EQ(dir, Direction::north);
                 break;
             case 1:
-                ASSERT_EQ(dir, Directions::north_east);
+                ASSERT_EQ(dir, Direction::north_east);
                 break;
             case 2:
-                ASSERT_EQ(dir, Directions::east);
+                ASSERT_EQ(dir, Direction::east);
                 break;
             case 3:
-                ASSERT_EQ(dir, Directions::south_east);
+                ASSERT_EQ(dir, Direction::south_east);
                 break;
             case 4:
-                ASSERT_EQ(dir, Directions::south);
+                ASSERT_EQ(dir, Direction::south);
                 break;
             case 5:
-                ASSERT_EQ(dir, Directions::south_west);
+                ASSERT_EQ(dir, Direction::south_west);
                 break;
             case 6:
-                ASSERT_EQ(dir, Directions::west);
+                ASSERT_EQ(dir, Direction::west);
                 break;
             case 7:
-                ASSERT_EQ(dir, Directions::north_west);
+                ASSERT_EQ(dir, Direction::north_west);
                 break;
             case 8:
-                ASSERT_EQ(dir, Directions::direction_max);
+                ASSERT_EQ(dir, Direction::direction_max);
                 break;
         }
         ++dir;
     }
     // Ensure that if we go past direction_max we get back to north.
-    ASSERT_EQ(dir, Directions::north);
+    ASSERT_EQ(dir, Direction::north);
 
 }

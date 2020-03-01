@@ -15,28 +15,28 @@ public:
      *
      * @return An unsigned integer representing the X coordinate of the Point.
      */
-    unsigned int getX() const;
+    int getX() const;
 
     /**
      * Gets the Y coordinate of the Point.
      *
      * @return An unsigned integer representing the Y coordinate of the Point.
      */
-    unsigned int getY() const;
+    int getY() const;
 
     /**
      * Set the X value.
      *
      * @param new_x The new x value this Point should have.
      */
-    void setX(unsigned int new_x);
+    void setX(int new_x);
 
     /**
      * Set the Y value
      *
      * @param new_y The new y value this Point should have.
      */
-    void setY(unsigned int new_y);
+    void setY(int new_y);
 
     /**
      * Adds two Points together.
@@ -83,8 +83,8 @@ public:
 
 
 private:
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
 };
 
 #endif //WORDSEARCHKATA_POINT_HPP
