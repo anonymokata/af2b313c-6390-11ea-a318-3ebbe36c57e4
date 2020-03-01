@@ -64,3 +64,13 @@ TEST(PointTests, TestPointAddition)
     ASSERT_EQ(c.getX(), 1);
     ASSERT_EQ(c.getY(), 1);
 }
+
+TEST(PointTests, TestPointAdditionAndAssignment)
+{
+    Point a(1, 1);
+    Point b(5, 5);
+
+    a += b;
+    ASSERT_EQ(a.getX(), 6);
+    ASSERT_EQ(a.getY(), 6);
+}

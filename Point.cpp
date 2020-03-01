@@ -24,10 +24,17 @@ void Point::setY(unsigned int new_y)
     y = new_y;
 }
 
-Point Point::operator+(const Point &other)
+Point Point::operator+(const Point& other)
 {
     Point res(x, y);
     res.setX(other.getX() + x);
     res.setY(other.getY() + y);
     return res;
+}
+
+Point& Point::operator+=(const Point& rhs)
+{
+    this->x += rhs.getX();
+    this->y += rhs.getY();
+    return *this;
 }

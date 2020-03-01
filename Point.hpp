@@ -39,7 +39,7 @@ public:
     void setY(unsigned int new_y);
 
     Point operator+(const Point& other);
-
+    Point& operator+=(const Point& rhs);
 
 private:
     unsigned int x;
