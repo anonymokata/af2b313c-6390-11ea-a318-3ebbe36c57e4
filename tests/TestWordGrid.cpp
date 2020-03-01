@@ -215,5 +215,4 @@ TEST(WordGridTests, GetSurroundingValuesByPoint)
     {
         ASSERT_EQ(known_nearby_values[static_cast<int>(d)], surrounding_values[static_cast<int>(d)]);
     }
-
 }
