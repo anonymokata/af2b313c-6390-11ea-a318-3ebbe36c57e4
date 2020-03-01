@@ -31,6 +31,11 @@ TEST(PointTests, TestPointGetterXandY)
     ASSERT_EQ(p->getY(), 2);
 }
 
+/**
+ * Simple tests to ensure that calling that calling the individual setters
+ * for each X and Y properly set those values and do not accidentally affect the
+ * other.
+ */
 TEST(PointTests, TestPointSetterXandY)
 {
     std::unique_ptr<Point> p = std::make_unique<Point>(5, 2);
