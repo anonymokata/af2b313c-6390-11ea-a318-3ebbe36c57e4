@@ -8,7 +8,7 @@ WordSearchSolver::WordSearchSolver(const WordGrid& grid) : _grid(grid)
 
 }
 
-std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word, const Point& starting_spot, const Direction dir)
+std::vector<Point> WordSearchSolver::searchAtPointAndDir(const std::string& word, const Point& starting_point, const Direction dir)
 {
     std::vector<Point> res;
     std::string found_word = "";
@@ -18,7 +18,7 @@ std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word
     // Ensure that our starting spot is actually a good place to begin.
     try
     {
-        value = _grid.getPoint(starting_spot);
+        value = _grid.getPoint(starting_point);
 
     }
     catch (std::out_of_range& ex)
@@ -33,10 +33,10 @@ std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word
 
     // Start with the first letter.
     found_word += *(word.begin());
-    res.push_back(starting_spot);
+    res.push_back(starting_point);
 
     // p will start off in a particular direction.
-    Point p = _grid.directionToOffset(dir) + starting_spot;
+    Point p = _grid.directionToOffset(dir) + starting_point;
     word_iter += 1;
     while (found_word != word && word_iter != word.end())
     {
@@ -71,13 +71,13 @@ std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word
     return res;
 }
 
-std::vector<Point> WordSearchSolver::findWordInAnyDirection(const std::string& word, const Point& starting_spot, Direction& dir_found)
+std::vector<Point> WordSearchSolver::searchAtPoint(const std::string& word, const Point& starting_point, Direction& dir_found)
 {
     std::vector<Point> res;
     Direction current_direction = Direction::north;
     for (current_direction = Direction::north; current_direction < Direction::direction_max; ++current_direction)
     {
-        res = findWordInDirection(word, starting_spot, current_direction);
+        res = searchAtPointAndDir(word, starting_point, current_direction);
         if (!res.empty())
         {
             dir_found = current_direction;
@@ -88,7 +88,7 @@ std::vector<Point> WordSearchSolver::findWordInAnyDirection(const std::string& w
     return res;
 }
 
-std::vector<Point> WordSearchSolver::findWord(const std::string& word)
+std::vector<Point> WordSearchSolver::searchForWord(const std::string& word)
 {
     std::vector<Point> res;
     Direction direction = Direction::direction_max;
@@ -99,7 +99,7 @@ std::vector<Point> WordSearchSolver::findWord(const std::string& word)
             Point p(x, y);
             if (_grid.getPoint(p) == *(word.begin()))
             {
-                res = findWordInAnyDirection(word, p, direction);
+                res = searchAtPoint(word, p, direction);
                 if (!res.empty())
                 {
                     return res;

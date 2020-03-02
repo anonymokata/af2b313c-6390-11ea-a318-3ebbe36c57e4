@@ -13,13 +13,10 @@ class WordGrid
 {
 
 public:
-
-
-
     /**
      * Construct a Word Grid Object.
      *
-     * @param grid_lines A vector containing strings from a well formatted word search grid.
+     * @param[in] grid_lines A vector containing strings from a well formatted word search grid.
      */
     explicit WordGrid(const std::vector<std::string> &grid_lines);
 
@@ -67,6 +64,15 @@ public:
      */
     char getPoint(const Point& p);
 
+    /**
+     * Returns all values in the grid that are near this point.
+     *
+     * This will return a vector of all cardinal directions of letters. If the cardinal direction
+     * is out of range, a null ('\0') is the character that is returned.
+     *
+     * @param[in] p The point from which we want to get all of the surrounding values
+     * @return A vector of cardinal values
+     */
     std::vector<char> getNearby(const Point& p);
 
     Point directionToOffset(Direction dir);
@@ -83,7 +89,7 @@ private:
      * @note This function assumes that any header row or any other data is removed. The parameter grid should
      * contain only the word search matrix.
      *
-     * @param grid A vector containing strings, that represent each line of the word grid. No header line is to be
+     * @param[in] grid A vector containing strings, that represent each line of the word grid. No header line is to be
      * provided, and it is assumed that no header line is provided.
      */
     void _processGrid(const std::vector<std::string>& grid);
@@ -93,7 +99,7 @@ private:
      *
      * This function process each letter A-Z of the word search delimited by the ',' character.
      *
-     * @param line The line from the word search matrix to process
+     * @param[in] line The line from the word search matrix to process
      * @return A vector that contains all of the word search letters (A-Z, and removing delimiters).
      */
     std::vector<char> _processLine(const std::string& line);

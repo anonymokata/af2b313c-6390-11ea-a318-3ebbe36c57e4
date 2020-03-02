@@ -27,7 +27,7 @@ public:
     /**
      * Set the X value.
      *
-     * @param new_x The new x value this Point should have.
+     * @param[in] new_x The new x value this Point should have.
      */
     void setX(int new_x);
 
@@ -45,7 +45,7 @@ public:
      * Example (assuming a and b are valid Points):
      * Point c = a + b;
      *
-     * @param rhs - The right hand side of the equation.
+     * @param[in] rhs - The right hand side of the equation.
      * @return A new point object that is the addition of of two points.
      */
     Point operator+(const Point& rhs);
@@ -58,7 +58,7 @@ public:
      * Point b(1, 1);
      * a += b;
      *
-     * @param rhs The right hand side of the equation.
+     * @param[in] rhs The right hand side of the equation.
      * @return A reference to this, don't think too much about it. Just use as in the example above.
      */
     Point& operator+=(const Point& rhs);
@@ -68,7 +68,7 @@ public:
      *
      * This simply compares the X and Y values. If they both match then they are equal. Otherwise they are not equal.
      *
-     * @param rhs - The right hand side of the comparison.
+     * @param[in] rhs - The right hand side of the comparison.
      * @return True if the two points are equal. False otherwise.
      */
     bool operator==(const Point& rhs);
@@ -76,7 +76,7 @@ public:
     /**
      * Compare two points for inequality.
      *
-     * @param rhs The right hand side of the inequality.
+     * @param[in] rhs The right hand side of the inequality.
      * @return True of the two points are not equal. False if they are equal.
      */
     bool operator!=(const Point& rhs);
