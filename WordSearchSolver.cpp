@@ -92,12 +92,16 @@ std::vector<Point> WordSearchSolver::searchForWord(const std::string& word)
 {
     std::vector<Point> res;
     Direction direction = Direction::direction_max;
+    char first_letter = *(word.begin());
     for (unsigned int y = 0; y < _grid.size(); y++)
     {
         for (unsigned int x = 0; x < _grid.size(); x++)
         {
             Point p(x, y);
-            if (_grid.getPoint(p) == *(word.begin()))
+
+            // Determine if we have found the first letter.
+            char current_letter = _grid.getPoint(p);
+            if (current_letter == first_letter)
             {
                 res = searchAtPoint(word, p, direction);
                 if (!res.empty())
