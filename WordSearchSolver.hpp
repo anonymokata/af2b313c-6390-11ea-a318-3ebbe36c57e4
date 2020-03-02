@@ -18,6 +18,7 @@ public:
     std::tuple<std::string, std::vector<Point>> naiveSearchWord(const std::string& word);
     std::vector<Point> findWordInAnyDirection(const std::string& word, const Point& starting_spot, Direction& dir_found);
     std::vector<Point> findWordInDirection(const std::string& word, const Point& starting_spot, const Direction dir);
+    std::vector<Point> findWord(const std::string& word);
     ~WordSearchSolver() = default;
 private:
     WordGrid _grid;

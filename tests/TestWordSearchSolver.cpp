@@ -95,3 +95,15 @@ TEST(TestWordSearchSolver, TestWordSearchGoodStartWrongDirectionOutOfRange)
     ASSERT_EQ(bones_points.size(), 0);
 }
 
+TEST(TestWordSaerchSolver, TestWordSearchFindSingleWord)
+{
+    FileReader fileReader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> lines = fileReader.readFileLines();
+    WordGrid grid(lines);
+    WordSearchSolver solver(grid);
+
+    std::vector<Point> bones_points;
+    ASSERT_NO_THROW(bones_points = solver.findWord("BONES"));
+    ASSERT_EQ(bones_points.size(), 5);
+
+}

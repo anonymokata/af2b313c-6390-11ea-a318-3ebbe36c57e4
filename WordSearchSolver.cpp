@@ -87,3 +87,8 @@ std::vector<Point> WordSearchSolver::findWordInAnyDirection(const std::string& w
 
     return res;
 }
+
+std::vector<Point> WordSearchSolver::findWord(const std::string& word)
+{
+    return std::vector<Point>(word.length(), Point(0,0));
+}
