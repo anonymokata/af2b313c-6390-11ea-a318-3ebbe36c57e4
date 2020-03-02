@@ -39,6 +39,34 @@ TEST(TestWordSearchSolver, TestWordSarchNaieveFindForwardInDirectionGivenStart)
 
 }
 
+TEST(TestWordSearchSolver, FindWordInAnyDirectionGivenStartingPoint)
+{
+    FileReader fileReader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> lines = fileReader.readFileLines();
+    WordGrid grid(lines);
+    WordSearchSolver solver(grid);
+    Direction dir_found = Direction::direction_max;
+    std::vector<Point> bones_points = solver.findWordInAnyDirection("BONES", Point(0, 6), dir_found);
+    ASSERT_EQ(bones_points.size(), 5);
+    ASSERT_TRUE(bones_points[0] == Point(0, 6));
+    ASSERT_TRUE(bones_points[1] == Point(0, 7));
+    ASSERT_TRUE(bones_points[2] == Point(0, 8));
+    ASSERT_TRUE(bones_points[3] == Point(0, 9));
+    ASSERT_TRUE(bones_points[4] == Point(0, 10));
+    ASSERT_NE(dir_found, Direction::direction_max);
+    ASSERT_EQ(dir_found, Direction::south);
+
+    dir_found = Direction::direction_max;
+    std::vector<Point> sulu_points = solver.findWordInAnyDirection("SULU", Point(3, 3), dir_found);
+    ASSERT_EQ(sulu_points.size(), 4);
+    ASSERT_EQ(dir_found, Direction::north_west);
+    ASSERT_TRUE(sulu_points[0] == Point(3, 3));
+    ASSERT_TRUE(sulu_points[1] == Point(2, 2));
+    ASSERT_TRUE(sulu_points[2] == Point(1, 1));
+    ASSERT_TRUE(sulu_points[3] == Point(0, 0));
+    
+}
+
 TEST(TestWordSeachSolver, TestWordSearchNieveFindWrongStart)
 {
     FileReader fileReader("./data/ProvidedWordSearch.txt");
@@ -60,3 +88,4 @@ TEST(TestWordSearchSolver, TestWordSearchGoodStartWrongDirectionOutOfRange)
     std::vector<Point> bones_points = solver.findWordInDirection("BONES", Point(0, 5), Direction::west);
     ASSERT_EQ(bones_points.size(), 0);
 }
+

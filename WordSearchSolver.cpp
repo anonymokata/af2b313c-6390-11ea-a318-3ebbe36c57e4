@@ -58,3 +58,20 @@ std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word
 
     return res;
 }
+
+std::vector<Point> WordSearchSolver::findWordInAnyDirection(const std::string& word, const Point& starting_spot, Direction& dir_found)
+{
+    std::vector<Point> res;
+    Direction current_direction = Direction::north;
+    for (current_direction = Direction::north; current_direction < Direction::direction_max; ++current_direction)
+    {
+        res = findWordInDirection(word, starting_spot, current_direction);
+        if (!res.empty())
+        {
+            dir_found = current_direction;
+            return res;
+        }
+    }
+
+    return res;
+}
