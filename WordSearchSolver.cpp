@@ -90,5 +90,22 @@ std::vector<Point> WordSearchSolver::findWordInAnyDirection(const std::string& w
 
 std::vector<Point> WordSearchSolver::findWord(const std::string& word)
 {
-    return std::vector<Point>(word.length(), Point(0,0));
+    std::vector<Point> res;
+    Direction direction = Direction::direction_max;
+    for (unsigned int y = 0; y < _grid.size(); y++)
+    {
+        for (unsigned int x = 0; x < _grid.size(); x++)
+        {
+            Point p(x, y);
+            if (_grid.getPoint(p) == *(word.begin()))
+            {
+                res = findWordInAnyDirection(word, p, direction);
+                if (!res.empty())
+                {
+                    return res;
+                }
+            }
+        }
+    }
+    return res;
 }

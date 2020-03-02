@@ -156,7 +156,7 @@ char WordGrid::getPoint(const Point& p)
     {
         throw std::out_of_range("Error: Attempt to access a point (x) that is out of the bounds of the word search grid.");
     }
-    if (p.getY() < 0 || static_cast<unsigned int>(p.getY()) > _2dGrid[0].size())
+    if (p.getY() < 0 || static_cast<unsigned int>(p.getY()) > _2dGrid[0].size() - 1)
     {
         throw std::out_of_range("Error: Attempt to access a point (y) that is out of the bounds of the word search grid.");
     }

@@ -105,5 +105,13 @@ TEST(TestWordSaerchSolver, TestWordSearchFindSingleWord)
     std::vector<Point> bones_points;
     ASSERT_NO_THROW(bones_points = solver.findWord("BONES"));
     ASSERT_EQ(bones_points.size(), 5);
+    ASSERT_TRUE(bones_points[0] == Point(0, 6));
+    ASSERT_TRUE(bones_points[1] == Point(0, 7));
+    ASSERT_TRUE(bones_points[2] == Point(0, 8));
+    ASSERT_TRUE(bones_points[3] == Point(0, 9));
+    ASSERT_TRUE(bones_points[4] == Point(0, 10));
+
+    ASSERT_NO_THROW(bones_points = solver.findWord("DOESNTEXIST"));
+    ASSERT_TRUE(bones_points.empty());
 
 }
