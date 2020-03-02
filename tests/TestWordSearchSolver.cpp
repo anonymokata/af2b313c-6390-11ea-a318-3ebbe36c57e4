@@ -73,7 +73,7 @@ TEST(TestWordSearchSolver, FindWordInAnyDirectionGivenStartingPoint)
 
 }
 
-TEST(TestWordSeachSolver, TestWordSearchNieveFindWrongStart)
+TEST(TestWordSearchSolver, TestWordSearchNieveFindWrongStart)
 {
     FileReader fileReader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> lines = fileReader.readFileLines();
@@ -95,7 +95,7 @@ TEST(TestWordSearchSolver, TestWordSearchGoodStartWrongDirectionOutOfRange)
     ASSERT_EQ(bones_points.size(), 0);
 }
 
-TEST(TestWordSaerchSolver, TestWordSearchFindSingleWord)
+TEST(TestWordSearchSolver, TestWordSearchFindSingleWord)
 {
     FileReader fileReader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> lines = fileReader.readFileLines();
@@ -115,3 +115,4 @@ TEST(TestWordSaerchSolver, TestWordSearchFindSingleWord)
     ASSERT_TRUE(bones_points.empty());
 
 }
+
