@@ -12,9 +12,21 @@ std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word
 {
     std::vector<Point> res;
     std::string found_word = "";
+    auto word_iter = word.begin();
+    char value = '\0';
 
     // Ensure that our starting spot is actually a good place to begin.
-    if (_grid.getPoint(starting_spot) != *(word.begin()))
+    try
+    {
+        value = _grid.getPoint(starting_spot);
+
+    }
+    catch (std::out_of_range& ex)
+    {
+        return res;
+    }
+
+    if (value != *word_iter)
     {
         return res;
     }
@@ -25,10 +37,10 @@ std::vector<Point> WordSearchSolver::findWordInDirection(const std::string& word
 
     // p will start off in a particular direction.
     Point p = _grid.directionToOffset(dir) + starting_spot;
-    auto word_iter = word.begin() + 1;
+    word_iter += 1;
     while (found_word != word && word_iter != word.end())
     {
-        char value = '\0';
+        value = '\0';
         try
         {
             value = _grid.getPoint(p);

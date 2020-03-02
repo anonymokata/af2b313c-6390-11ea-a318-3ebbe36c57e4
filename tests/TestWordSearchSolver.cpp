@@ -64,7 +64,13 @@ TEST(TestWordSearchSolver, FindWordInAnyDirectionGivenStartingPoint)
     ASSERT_TRUE(sulu_points[1] == Point(2, 2));
     ASSERT_TRUE(sulu_points[2] == Point(1, 1));
     ASSERT_TRUE(sulu_points[3] == Point(0, 0));
-    
+
+    dir_found = Direction::direction_max;
+    std::vector<Point> not_found_points = solver.findWordInAnyDirection("DOESNOTEXIST", Point(20, 50), dir_found);
+
+    ASSERT_TRUE(not_found_points.empty());
+    ASSERT_EQ(dir_found, Direction::direction_max);
+
 }
 
 TEST(TestWordSeachSolver, TestWordSearchNieveFindWrongStart)
