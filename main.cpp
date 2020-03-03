@@ -81,7 +81,12 @@ int MAIN(int argc, char* argv[])
     }
 
     WordSearchSolver solver(*grid);
-    solver.solve();
+    std::vector<WordSolution> solutions = solver.solve();
+
+    for (auto solution : solutions)
+    {
+        std::cout << solution << std::endl;
+    }
 
     return SUCCESS;
 }
