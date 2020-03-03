@@ -7,6 +7,11 @@
 std::ostream& operator<<(std::ostream& out, const _WordSolution& ws)
 {
     out << ws.word << ": ";
+    if (ws.points.empty())
+    {
+        out << "Not Found";
+        return out;
+    }
     for (const Point& p : ws.points)
     {
 

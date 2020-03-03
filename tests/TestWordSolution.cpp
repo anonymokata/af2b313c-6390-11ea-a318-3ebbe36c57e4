@@ -25,4 +25,14 @@ TEST(TestWordSoluton, TestOuputOperator)
 
     ASSERT_STREQ(ss.str().c_str(), expected.c_str());
 
+    std::string not_found("DOESNTEXIST: Not Found");
+    ss.str("");
+    solution = {
+            .word = "DOESNTEXIST",
+            .points = std::vector<Point>(),
+    };
+
+    ss << solution;
+    ASSERT_STREQ(ss.str().c_str(), not_found.c_str());
+
 }
