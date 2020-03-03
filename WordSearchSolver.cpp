@@ -117,15 +117,18 @@ std::vector<Point> WordSearchSolver::searchForWord(const std::string& word)
 }
 
 
-std::vector<std::tuple<std::string, std::vector<Point>>> WordSearchSolver::solve()
+std::vector<WordSolution> WordSearchSolver::solve()
 {
-    std::vector<std::tuple<std::string, std::vector<Point>>> res;
+    std::vector<WordSolution> res;
 
     for (auto& word : _grid.getSearchWords())
     {
         std::vector<Point> word_points = searchForWord(word);
-        auto tmp_tuple = std::make_tuple(word, word_points);
-        res.push_back(tmp_tuple);
+        WordSolution tmp_sol = {
+                .word = word,
+                .points = word_points,
+        };
+        res.push_back(tmp_sol);
 
     }
 

@@ -9,6 +9,7 @@
 #include "WordGrid.hpp"
 #include "Point.hpp"
 #include "Direction.hpp"
+#include "WordSolution.hpp"
 
 class WordSearchSolver
 {
@@ -56,7 +57,7 @@ public:
      */
     std::vector<Point> searchForWord(const std::string& word);
 
-    std::vector<std::tuple<std::string, std::vector<Point>>> solve();
+    std::vector<WordSolution> solve();
 
     /**
      * Default destructor.

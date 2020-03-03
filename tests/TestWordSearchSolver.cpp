@@ -6,6 +6,7 @@
 #include <string>
 #include <map>
 #include "TestConstants.hpp"
+#include "WordSolution.hpp"
 
 TEST(TestWordSearchSolver, TestWordSearchConstructor)
 {
@@ -125,7 +126,8 @@ TEST(WordSaerchSolver, TestWordSearchSolvePuzzle)
     WordGrid grid(lines);
     WordSearchSolver solver(grid);
 
-    std::vector<std::tuple<std::string, std::vector<Point>>> solutions = solver.solve();
+    std::vector<WordSolution> solutions = solver.solve();
     ASSERT_EQ(solutions.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
+
 
 }

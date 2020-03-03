@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(tests)
 
-add_executable(WordSearchKata main.cpp FileReader.cpp FileReader.hpp Point.hpp Point.cpp Direction.cpp Direction.hpp WordSearchSolver.cpp WordSearchSolver.hpp)
+add_executable(WordSearchKata main.cpp FileReader.cpp FileReader.hpp Point.hpp Point.cpp Direction.cpp Direction.hpp WordSearchSolver.cpp WordSearchSolver.hpp WordSolution.cpp WordSolution.hpp)
