@@ -3,6 +3,8 @@
 //
 
 #include "WordSearchSolver.hpp"
+#include <algorithm>
+
 WordSearchSolver::WordSearchSolver(const WordGrid& grid) : _grid(grid)
 {
 
@@ -111,5 +113,21 @@ std::vector<Point> WordSearchSolver::searchForWord(const std::string& word)
             }
         }
     }
+    return res;
+}
+
+
+std::vector<std::tuple<std::string, std::vector<Point>>> WordSearchSolver::solve()
+{
+    std::vector<std::tuple<std::string, std::vector<Point>>> res;
+
+    for (auto& word : _grid.getSearchWords())
+    {
+        std::vector<Point> word_points = searchForWord(word);
+        auto tmp_tuple = std::make_tuple(word, word_points);
+        res.push_back(tmp_tuple);
+
+    }
+
     return res;
 }

@@ -19,7 +19,6 @@ public:
      * @param[in] grid The WordGrid to be used to solve.
      */
     explicit WordSearchSolver(const WordGrid& grid);
-    std::vector<std::tuple<std::string, std::vector<Point>>> naiveSearch();
 
     /**
      * Searchs for a word given a specific point.
@@ -56,6 +55,8 @@ public:
      * @return A vector containing the Points of the word in the grid if the word was found. An empty vector otherwise.
      */
     std::vector<Point> searchForWord(const std::string& word);
+
+    std::vector<std::tuple<std::string, std::vector<Point>>> solve();
 
     /**
      * Default destructor.

@@ -5,6 +5,8 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "TestConstants.hpp"
+
 TEST(TestWordSearchSolver, TestWordSearchConstructor)
 {
     FileReader fileReader("./data/ProvidedWordSearch.txt");
@@ -116,3 +118,14 @@ TEST(TestWordSearchSolver, TestWordSearchFindSingleWord)
 
 }
 
+TEST(WordSaerchSolver, TestWordSearchSolvePuzzle)
+{
+    FileReader fileReader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> lines = fileReader.readFileLines();
+    WordGrid grid(lines);
+    WordSearchSolver solver(grid);
+
+    std::vector<std::tuple<std::string, std::vector<Point>>> solutions = solver.solve();
+    ASSERT_EQ(solutions.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
+
+}

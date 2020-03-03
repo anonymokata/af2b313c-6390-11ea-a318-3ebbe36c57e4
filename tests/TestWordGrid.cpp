@@ -10,9 +10,7 @@
 #include "FileReader.hpp"
 #include "Point.hpp"
 #include "Direction.hpp"
-
-#define WORD_GRID_ROWS 15
-#define WORDS_IN_PROVIDED_WORD_SEARCH 7
+#include "TestConstants.hpp"
 
 
 TEST(WordGridTests, TestWordGridConstructor)

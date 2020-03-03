@@ -22,7 +22,7 @@ set(SOURCE_FILES
         ../Direction.cpp
         ../WordSearchSolver.cpp)
 
-set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestWordSearchSolver.cpp FileReadingTests.cpp)
+set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestWordSearchSolver.cpp FileReadingTests.cpp TestConstants.hpp)
 
 add_executable(run_tests ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(run_tests gtest gtest_main)
