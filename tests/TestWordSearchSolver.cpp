@@ -129,5 +129,101 @@ TEST(WordSaerchSolver, TestWordSearchSolvePuzzle)
     std::vector<WordSolution> solutions = solver.solve();
     ASSERT_EQ(solutions.size(), WORDS_IN_PROVIDED_WORD_SEARCH);
 
+    std::vector<Point> bones_solution = {
+            Point(0, 6),
+            Point(0, 7),
+            Point(0, 8),
+            Point(0, 9),
+            Point(0, 10),
+    };
+
+    std::vector<Point> sulu_solution = {
+        Point(3, 3),
+        Point(2, 2),
+        Point(1, 1),
+        Point(0, 0),
+    };
+
+    std::vector<Point> kahn_solution = {
+            Point(5, 9),
+            Point(5, 8),
+            Point(5, 7),
+            Point(5, 6),
+    };
+
+    std::vector<Point> kirk_solution = {
+            Point(4, 7),
+            Point(3, 7),
+            Point(2, 7),
+            Point(1, 7),
+    };
+
+    std::vector<Point> scotty_solution = {
+            Point(0, 5),
+            Point(1, 5),
+            Point(2, 5),
+            Point(3, 5),
+            Point(4, 5),
+            Point(5, 5),
+    };
+
+    std::vector<Point> spock_solution = {
+            Point(2, 1),
+            Point(3, 2),
+            Point(4, 3),
+            Point(5, 4),
+            Point(6, 5),
+    };
+
+    std::vector<Point> uhura_solution = {
+            Point(4, 0),
+            Point(3, 1),
+            Point(2, 2),
+            Point(1, 3),
+            Point(0, 4),
+    };
+
+    for (const auto& solution : solutions)
+    {
+        std::vector<Point>* current_word = nullptr;
+        if (solution.word == "BONES")
+        {
+            current_word = &bones_solution;
+        }
+        else if (solution.word == "SULU")
+        {
+            current_word = &sulu_solution;
+        }
+        else if (solution.word == "KHAN")
+        {
+            current_word = &kahn_solution;
+        }
+        else if (solution.word == "KIRK")
+        {
+            current_word = &kirk_solution;
+        }
+        else if (solution.word == "SCOTTY")
+        {
+            current_word = &scotty_solution;
+        }
+        else if (solution.word == "SPOCK")
+        {
+            current_word = &spock_solution;
+        }
+        else if (solution.word == "UHURA")
+        {
+            current_word = &uhura_solution;
+        }
+
+        // Ensure we didn't get another word we weren't expecting.
+        ASSERT_NE(current_word, nullptr);
+        
+        for(unsigned int idx = 0; idx < solution.points.size(); idx++)
+        {
+
+            ASSERT_TRUE((*current_word)[idx] == solution.points[idx]);
+        }
+
+    }
 
 }
