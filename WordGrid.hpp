@@ -17,6 +17,9 @@ public:
      * Construct a Word Grid Object.
      *
      * @param[in] grid_lines A vector containing strings from a well formatted word search grid.
+     * @throws logic_error If the number of lines available is not large enough, the grid isn't square, or the grid
+     * has rows with different column sizes or there are unacceptable characters / delimiters or general formatting
+     * errors in the provided data.
      */
     explicit WordGrid(const std::vector<std::string> &grid_lines);
 

@@ -5,4 +5,18 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(tests)
 
-add_executable(WordSearchKata main.cpp FileReader.cpp FileReader.hpp Point.hpp Point.cpp Direction.cpp Direction.hpp WordSearchSolver.cpp WordSearchSolver.hpp WordSolution.cpp WordSolution.hpp)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra")
+
+configure_file(${PROJECT_SOURCE_DIR}/tests/data/ProvidedWordSearch.txt ${PROJECT_BINARY_DIR}/data/ProvidedWordSearch.txt COPYONLY)
+
+set(SOURCE_FILES
+        main.cpp
+        FileReader.cpp
+        Point.cpp
+        Direction.cpp
+        WordSearchSolver.cpp
+        WordSolution.cpp
+        WordGrid.cpp
+        main.hpp)
+
+add_executable(WordSearchKata ${SOURCE_FILES})

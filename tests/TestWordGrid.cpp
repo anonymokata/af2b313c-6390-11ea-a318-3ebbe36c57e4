@@ -183,8 +183,6 @@ TEST(WordGridTests, TestGetValueOutOfBounds)
 
 }
 
-
-
 TEST(WordGridTests, TestDirectionToPointOffset)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
