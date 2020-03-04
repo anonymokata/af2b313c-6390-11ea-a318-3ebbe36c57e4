@@ -97,8 +97,6 @@ std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(const std::
     return res;
 }
 
-
-
 std::vector<WordSolution> SinglePassSolver::solve()
 {
     throw std::runtime_error("Error: Not yet implemented.");
