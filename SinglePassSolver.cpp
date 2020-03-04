@@ -12,11 +12,8 @@ SinglePassSolver::SinglePassSolver(const WordGrid& grid) : WordSearchSolver(grid
 }
 
 
-std::vector<Point> SinglePassSolver::searchAtPointAndDir(
-        std::string::iterator begin,
-        std::string::iterator end,
-        const Point& start_point,
-        const Direction dir)
+std::vector<Point> SinglePassSolver::searchAtPointAndDir(std::string::iterator begin, std::string::iterator end,
+                                                         const Point& start_point,    const Direction dir)
 {
 
     std::vector<Point> res;
@@ -24,25 +21,10 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDir(
     char current_letter = *begin;
     char grid_letter = '\0';
 
-    try
-    {
-        grid_letter = _grid.getPoint(start_point);
-    }
-    catch (std::out_of_range& ex)
-    {
-        return res;
-    }
-
-    if (current_letter != grid_letter)
-    {
-        return res;
-    }
-
-    res.push_back(start_point);
-    Point current_point = _grid.directionToOffset(dir) + start_point;
+    Point current_point = Point(start_point.getX(), start_point.getY());
     do
     {
-        begin++;
+
         current_letter = *begin;
         try
         {
@@ -59,9 +41,11 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDir(
             res.clear();
             break;
         }
-        current_point = _grid.directionToOffset(dir) + current_point;
+
         res.push_back(current_point);
-    } while (begin < end - 1);
+        current_point = _grid.directionToOffset(dir) + current_point;
+        begin++;
+    } while (begin < end);
 
     return res;
 }

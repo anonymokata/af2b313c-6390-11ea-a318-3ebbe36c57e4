@@ -31,5 +31,5 @@ TEST(TestSinglePass, TestBuildFindWordInDirection)
     std::string word = "SPOCK";
     std::vector<Point> results = solver.searchAtPointAndDir(word.begin(), word.end(), Point(2,1), Direction::south_east);
     ASSERT_EQ(results.size(), 5);
-
+    ASSERT_TRUE(std::equal(results.begin(), results.end(), spock_solution.begin()));
 }
