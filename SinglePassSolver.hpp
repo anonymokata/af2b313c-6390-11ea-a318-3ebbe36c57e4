@@ -1,6 +1,7 @@
 #ifndef WORDSEARCHKATA_SINGLEPASSSOLVER_HPP
 #define WORDSEARCHKATA_SINGLEPASSSOLVER_HPP
 #include <vector>
+#include <list>
 #include "WordSearchSolver.hpp"
 #include "WordGrid.hpp"
 
@@ -17,7 +18,7 @@ public:
                                                 const Point& start_point,
                                                 const Direction dir_start, const Direction dir_stop);
 
-    std::vector<WordSolution> searchWordsInGridAtPoint(std::vector<std::string> words, Point start_point);
+    std::vector<WordSolution> searchWordsInGridAtPoint(const std::list<std::string>& words, Point start_point);
     std::vector<WordSolution> solve() override;
     ~SinglePassSolver() override = default;
 private:

@@ -67,33 +67,32 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDirRange(T begin, T end,
     return res;
 }
 
-std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(std::vector<std::string> words, Point start_point)
+std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(const std::list<std::string>& words, Point start_point)
 {
     std::vector<WordSolution> res;
     for (auto word : words)
     {
-        WordSolution sol;
-        std::vector<Point> pts = searchAtPointAndDirRange(word.begin(), word.end(), start_point, Direction::east, Direction::south_west);
-        if (!pts.empty())
+        std::vector<Point> pts;
+        for (int i = 0; i < 2; i++)
         {
-            // We found this word, continue on.
-            sol.word = word;
-            sol.points = pts;
-            res.push_back(sol);
-            continue;
+            WordSolution sol;
+            if (i == 0)
+            {
+                pts = searchAtPointAndDirRange(word.begin(), word.end(), start_point, Direction::east, Direction::south_west);
+            }
+            else
+            {
+                pts = searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east, Direction::south_west);
+            }
+            if (!pts.empty())
+            {
+                // We found this word, continue on.
+                sol.word = word;
+                sol.points = pts;
+                res.push_back(sol);
+                break;
+            }
         }
-        pts = searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east, Direction::south_west);
-        if (!pts.empty())
-        {
-            // We found this word, continue on.
-            sol.word = word;
-            sol.points = pts;
-            res.push_back(sol);
-            continue;
-        }
-
-        // Take another whack at it in reverse.
-
     }
     return res;
 }

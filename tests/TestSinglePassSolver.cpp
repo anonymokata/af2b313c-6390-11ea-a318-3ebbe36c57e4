@@ -57,7 +57,7 @@ TEST(TestSinglePass, TestFindWordInGrid)
     WordGrid word_grid(file_lines);
 
     SinglePassSolver solver(word_grid);
-    std::vector<std::string> words {
+    std::list<std::string> words {
         std::string("BONES"),
         std::string("KHAN"),
         std::string("KIRK"),
