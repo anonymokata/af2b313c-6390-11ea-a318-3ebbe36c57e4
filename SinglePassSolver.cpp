@@ -50,6 +50,24 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDir(std::string::iterator b
     return res;
 }
 
+std::vector<Point> SinglePassSolver::searchAtPointAndDirRange(std::string::iterator begin, std::string::iterator end,
+                                            const Point& start_point,
+                                            const Direction dir_start, const Direction dir_stop)
+{
+    std::vector<Point> res;
+    for (auto current_direction = dir_start; current_direction < dir_stop; ++current_direction)
+    {
+        res = searchAtPointAndDir(begin, end, start_point, current_direction);
+        if (!res.empty())
+        {
+            break;
+        }
+    }
+    return res;
+}
+
+
+
 std::vector<WordSolution> SinglePassSolver::solve()
 {
     throw std::runtime_error("Error: Not yet implemented.");

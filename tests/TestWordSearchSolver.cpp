@@ -168,7 +168,7 @@ TEST(WordSaerchSolver, TestWordSearchSolvePuzzle)
         // Ensure we didn't get another word we weren't expecting.
         ASSERT_NE(current_word, nullptr);
         ASSERT_TRUE(std::equal(current_word->begin(), current_word->end(), solution.points.begin()));
-       
+
     }
 
 }

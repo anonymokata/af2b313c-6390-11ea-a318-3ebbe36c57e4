@@ -21,7 +21,7 @@ TEST(TestSinglePass, TestBuildConstructor)
 
 }
 
-TEST(TestSinglePass, TestBuildFindWordInDirection)
+TEST(TestSinglePass, TestFindWordInDirection)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
@@ -32,4 +32,20 @@ TEST(TestSinglePass, TestBuildFindWordInDirection)
     std::vector<Point> results = solver.searchAtPointAndDir(word.begin(), word.end(), Point(2,1), Direction::south_east);
     ASSERT_EQ(results.size(), 5);
     ASSERT_TRUE(std::equal(results.begin(), results.end(), spock_solution.begin()));
+}
+
+TEST(TestSinglePas, TestFindWordInDirectionRange)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    WordGrid word_grid(file_lines);
+
+    SinglePassSolver solver(word_grid);
+    std::string word = "SPOCK";
+    std::vector<Point> results = solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::east, Direction::direction_max);
+    ASSERT_EQ(results.size(), 5);
+    results.clear();
+    results = solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::south, Direction::direction_max);
+    ASSERT_EQ(results.size(), 0);
+
 }
