@@ -15,9 +15,9 @@ set(SOURCE_FILES
         FileReader.cpp
         Point.cpp
         Direction.cpp
-        WordSearchSolver.cpp
+        NaiveWordSearchSolver.cpp
         WordSolution.cpp
         WordGrid.cpp
-        )
+        WordSearchSolver.cpp WordSearchSolver.hpp)
 
 add_executable(WordSearchKata ${SOURCE_FILES})

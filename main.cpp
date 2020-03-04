@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include "WordGrid.hpp"
-#include "WordSearchSolver.hpp"
+#include "NaiveWordSearchSolver.hpp"
 #include "FileReader.hpp"
 #include <vector>
 #include <string>
@@ -80,7 +80,7 @@ int MAIN(int argc, char* argv[])
         return INVALID_DATA;
     }
 
-    WordSearchSolver solver(*grid);
+    NaiveWordSearchSolver solver(*grid);
     std::vector<WordSolution> solutions = solver.solve();
 
     for (auto solution : solutions)

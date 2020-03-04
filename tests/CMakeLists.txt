@@ -17,10 +17,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra")
 
 set(SOURCE_FILES
         ../FileReader.cpp
+        ../WordSearchSolver.cpp
         ../WordGrid.cpp
         ../Point.cpp
         ../Direction.cpp
-        ../WordSearchSolver.cpp
+        ../NaiveWordSearchSolver.cpp
         ../main.cpp
         ../WordSolution.cpp)
 
