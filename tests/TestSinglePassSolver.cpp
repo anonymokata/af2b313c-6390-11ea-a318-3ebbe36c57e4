@@ -34,7 +34,7 @@ TEST(TestSinglePass, TestFindWordInDirection)
     ASSERT_TRUE(std::equal(results.begin(), results.end(), spock_solution.begin()));
 }
 
-TEST(TestSinglePas, TestFindWordInDirectionRange)
+TEST(TestSinglePass, TestFindWordInDirectionRange)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
@@ -47,5 +47,32 @@ TEST(TestSinglePas, TestFindWordInDirectionRange)
     results.clear();
     results = solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::south, Direction::direction_max);
     ASSERT_EQ(results.size(), 0);
+
+}
+
+TEST(TestSinglePass, TestFindWordInGrid)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    WordGrid word_grid(file_lines);
+
+    SinglePassSolver solver(word_grid);
+    std::vector<std::string> words {
+        std::string("BONES"),
+        std::string("KHAN"),
+        std::string("KIRK"),
+        std::string("SPOCK"),
+        std::string("SULU"),
+        std::string("UHURA"),
+    };
+
+
+    std::vector<WordSolution> solution = solver.searchWordsInGridAtPoint(words, Point(1, 7));
+    ASSERT_EQ(solution.size(), 1);
+    ASSERT_STREQ(solution[0].word.c_str(), "KIRK");
+
+    solution = solver.searchWordsInGridAtPoint(words, Point(0, 0));
+    ASSERT_EQ(solution.size(), 1);
+    ASSERT_STREQ(solution[0].word.c_str(), "SULU");
 
 }

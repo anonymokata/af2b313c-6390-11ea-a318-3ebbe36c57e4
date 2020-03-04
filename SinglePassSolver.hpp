@@ -9,11 +9,15 @@ class SinglePassSolver: public WordSearchSolver
 public:
 
     explicit SinglePassSolver(const WordGrid& grid);
-    std::vector<Point> searchAtPointAndDir(std::string::iterator begin, std::string::iterator end, const Point& start_point, const Direction dir);
-    std::vector<Point> searchAtPointAndDirRange(std::string::iterator begin, std::string::iterator end,
+
+    template <class T>
+    std::vector<Point> searchAtPointAndDir(T begin, T end, const Point& start_point, const Direction dir);
+    template <class T>
+    std::vector<Point> searchAtPointAndDirRange(T begin, T end,
                                                 const Point& start_point,
                                                 const Direction dir_start, const Direction dir_stop);
 
+    std::vector<WordSolution> searchWordsInGridAtPoint(std::vector<std::string> words, Point start_point);
     std::vector<WordSolution> solve() override;
     ~SinglePassSolver() override = default;
 private:

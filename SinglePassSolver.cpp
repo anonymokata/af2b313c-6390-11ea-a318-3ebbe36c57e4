@@ -11,8 +11,8 @@ SinglePassSolver::SinglePassSolver(const WordGrid& grid) : WordSearchSolver(grid
 
 }
 
-
-std::vector<Point> SinglePassSolver::searchAtPointAndDir(std::string::iterator begin, std::string::iterator end,
+template <class T>
+std::vector<Point> SinglePassSolver::searchAtPointAndDir(T begin, T end,
                                                          const Point& start_point,    const Direction dir)
 {
 
@@ -50,7 +50,8 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDir(std::string::iterator b
     return res;
 }
 
-std::vector<Point> SinglePassSolver::searchAtPointAndDirRange(std::string::iterator begin, std::string::iterator end,
+template <class T>
+std::vector<Point> SinglePassSolver::searchAtPointAndDirRange(T begin, T end,
                                             const Point& start_point,
                                             const Direction dir_start, const Direction dir_stop)
 {
@@ -62,6 +63,37 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDirRange(std::string::itera
         {
             break;
         }
+    }
+    return res;
+}
+
+std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(std::vector<std::string> words, Point start_point)
+{
+    std::vector<WordSolution> res;
+    for (auto word : words)
+    {
+        WordSolution sol;
+        std::vector<Point> pts = searchAtPointAndDirRange(word.begin(), word.end(), start_point, Direction::east, Direction::south_west);
+        if (!pts.empty())
+        {
+            // We found this word, continue on.
+            sol.word = word;
+            sol.points = pts;
+            res.push_back(sol);
+            continue;
+        }
+        pts = searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east, Direction::south_west);
+        if (!pts.empty())
+        {
+            // We found this word, continue on.
+            sol.word = word;
+            sol.points = pts;
+            res.push_back(sol);
+            continue;
+        }
+
+        // Take another whack at it in reverse.
+
     }
     return res;
 }
