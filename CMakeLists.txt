@@ -18,6 +18,6 @@ set(SOURCE_FILES
         NaiveWordSearchSolver.cpp
         WordSolution.cpp
         WordGrid.cpp
-        WordSearchSolver.cpp WordSearchSolver.hpp)
+        WordSearchSolver.cpp WordSearchSolver.hpp SinglePassSolver.cpp SinglePassSolver.hpp)
 
 add_executable(WordSearchKata ${SOURCE_FILES})

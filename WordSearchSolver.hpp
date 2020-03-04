@@ -14,7 +14,7 @@ class WordSearchSolver
 public:
     explicit WordSearchSolver(const WordGrid& grid);
     virtual std::vector<WordSolution> solve() = 0;
-    ~WordSearchSolver()=default;
+    virtual ~WordSearchSolver() {};
 
 protected:
     WordGrid _grid;

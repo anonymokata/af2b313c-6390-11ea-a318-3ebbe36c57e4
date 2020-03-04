@@ -1,12 +1,12 @@
-//
-// Created by jordan on 3/1/20.
-//
 
 #include "NaiveWordSearchSolver.hpp"
-#include <algorithm>
+#include "FileReader.hpp"
+#include "WordGrid.hpp"
+
 
 NaiveWordSearchSolver::NaiveWordSearchSolver(const WordGrid& grid) : WordSearchSolver(grid)
 {
+
 }
 
 std::vector<Point> NaiveWordSearchSolver::searchAtPointAndDir(const std::string& word, const Point& starting_point, const Direction dir)

@@ -57,7 +57,7 @@ public:
      */
     std::vector<Point> searchForWord(const std::string& word);
 
-    std::vector<WordSolution> solve();
+    std::vector<WordSolution> solve() override;
 
     /**
      * Default destructor.

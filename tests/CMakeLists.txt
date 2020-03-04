@@ -22,12 +22,13 @@ set(SOURCE_FILES
         ../Point.cpp
         ../Direction.cpp
         ../NaiveWordSearchSolver.cpp
+        ../SinglePassSolver.cpp
         ../main.cpp
         ../WordSolution.cpp)
 
 add_definitions(-DUNIT_TESTS=1)
 
-set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestWordSearchSolver.cpp FileReadingTests.cpp TestAltMain.cpp TestWordSolution.cpp)
+set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestWordSearchSolver.cpp FileReadingTests.cpp TestAltMain.cpp TestWordSolution.cpp TestSinglePassWordSearchSolver.cpp)
 
 add_executable(run_tests ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(run_tests gtest gtest_main)
