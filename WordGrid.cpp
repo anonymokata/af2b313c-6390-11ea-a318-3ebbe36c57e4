@@ -190,25 +190,3 @@ Point WordGrid::directionToOffset(Direction dir)
     // Unnecessary, but G++ complains about reaching the end of a non-void function.
     return Point(0, 0);
 }
-
-std::vector<char> WordGrid::getNearby(const Point& p)
-{
-    std::vector<char> nearby_values;
-
-    for (Direction dir = Direction::north; dir < Direction::direction_max; ++dir)
-    {
-        Point offset = directionToOffset(dir);
-        Point combined_point = offset + p;
-        try
-        {
-            char value = getPoint(combined_point);
-            nearby_values.push_back(value);
-        }
-        catch (std::out_of_range& ex)
-        {
-            nearby_values.push_back('\0');
-        }
-    }
-
-    return nearby_values;
-}

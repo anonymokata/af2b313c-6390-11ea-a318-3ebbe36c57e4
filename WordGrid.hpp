@@ -1,6 +1,8 @@
-//
-// Created by jordan on 2/25/20.
-//
+/**
+ * @file WordGrid.hpp
+ *
+ * This file contains the declaration of the WordGrid class, its members and properties.
+ */
 
 #ifndef WORDSEARCHKATA_WORDGRID_HPP
 #define WORDSEARCHKATA_WORDGRID_HPP
@@ -68,16 +70,17 @@ public:
     char getPoint(const Point& p);
 
     /**
-     * Returns all values in the grid that are near this point.
+     * Converts a direction enumeration into a point that can be used as an offset.
      *
-     * This will return a vector of all cardinal directions of letters. If the cardinal direction
-     * is out of range, a null ('\0') is the character that is returned.
+     * This can be used to do point math in the same way one might do vector math. E.g.
+     * Point a = Point(5, 5) + directionToOffset(Direction::north).
      *
-     * @param[in] p The point from which we want to get all of the surrounding values
-     * @return A vector of cardinal values
+     * The pointer returned from directionToOffset(Direction::north) would be Point(-1, 0). Meaning
+     * adding this to Point(5, 5) would create a = Point(4, 5).
+     *
+     * @param dir The cardinal direction to provide an offset for.
+     * @return A Point object representing an offset in the correct cardinal direction.
      */
-    std::vector<char> getNearby(const Point& p);
-
     Point directionToOffset(Direction dir);
 
     /**

@@ -296,22 +296,3 @@ TEST(WordGridTests, TestDirectionToPointOffset)
     EXPECT_EQ(p.getY(), 4);
 
 }
-
-TEST(WordGridTests, GetSurroundingValuesByPoint)
-{
-    FileReader reader("./data/ProvidedWordSearch.txt");
-    std::vector<std::string> file_lines = reader.readFileLines();
-    std::unique_ptr<WordGrid> grid = std::make_unique<WordGrid>(file_lines);
-
-    Point p(5, 5);
-
-    char known_nearby_values[] = {'C', 'I', 'K', 'E', 'N', 'L', 'T', 'G'};
-    ASSERT_EQ(grid->getPoint(p), 'Y');
-    std::vector<char> surrounding_values = grid->getNearby(p);
-    ASSERT_EQ(surrounding_values.size(), 8);
-
-    for(Direction d = Direction::north; d < Direction::direction_max; ++d)
-    {
-        ASSERT_EQ(known_nearby_values[static_cast<int>(d)], surrounding_values[static_cast<int>(d)]);
-    }
-}
