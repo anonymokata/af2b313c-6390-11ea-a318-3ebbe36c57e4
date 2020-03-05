@@ -77,7 +77,7 @@ TEST(TestSinglePass, TestFindWordsInGridAtPoint)
 
 }
 
-TEST(TestSinglePass, TestFindWordsInGrid)
+TEST(TestSinglePass, TestSolvePuzzle)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
@@ -88,6 +88,7 @@ TEST(TestSinglePass, TestFindWordsInGrid)
             std::string("BONES"),
             std::string("KHAN"),
             std::string("KIRK"),
+            std::string("SCOTTY"),
             std::string("SPOCK"),
             std::string("SULU"),
             std::string("UHURA"),
@@ -95,4 +96,19 @@ TEST(TestSinglePass, TestFindWordsInGrid)
 
     std::vector<WordSolution> all_solutions = solver.solve();
     ASSERT_EQ(all_solutions.size(), words.size());
+
+    auto it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "BONES";});
+    ASSERT_FALSE(it == all_solutions.end());
+    it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "KHAN";});
+    ASSERT_FALSE(it == all_solutions.end());
+    it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "KIRK";});
+    ASSERT_FALSE(it == all_solutions.end());
+    it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "SPOCK";});
+    ASSERT_FALSE(it == all_solutions.end());
+    it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "SULU";});
+    ASSERT_FALSE(it == all_solutions.end());
+    it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "UHURA";});
+    ASSERT_FALSE(it == all_solutions.end());
+    it = std::find_if(all_solutions.begin(), all_solutions.end(), [](const WordSolution& solution) {return solution.word == "SCOTTY";});
+    ASSERT_FALSE(it == all_solutions.end());
 }

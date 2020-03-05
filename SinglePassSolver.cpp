@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "SinglePassSolver.hpp"
 
 /**
@@ -76,11 +77,11 @@ std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(const std::
             WordSolution sol;
             if (i == 0)
             {
-                pts = searchAtPointAndDirRange(word.begin(), word.end(), start_point, Direction::east, Direction::south_west);
+                pts = searchAtPointAndDirRange(word.begin(), word.end(), start_point, Direction::east, Direction::west);
             }
             else
             {
-                pts = searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east, Direction::south_west);
+                pts = searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east, Direction::west);
             }
             if (!pts.empty())
             {
@@ -97,7 +98,27 @@ std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(const std::
 
 std::vector<WordSolution> SinglePassSolver::solve()
 {
-    return std::vector<WordSolution>(6, WordSolution());
+    std::vector<std::string> words_vec = _grid.getSearchWords();
+    std::list<std::string> words(words_vec.begin(), words_vec.end());
+    std::vector<WordSolution> solutions;
+
+    for (unsigned int y = 0; y < _grid.size(); y++)
+    {
+        for (unsigned int x = 0; x < _grid.size(); x++)
+        {
+            Point current_point(x, y);
+            std::vector<WordSolution> tmp = searchWordsInGridAtPoint(words, current_point);
+            if (!tmp.empty())
+            {
+                solutions.insert(solutions.end(), tmp.begin(), tmp.end());
+                // A bit tricky, but not as bad as it may seem. This takes all of the solutions we just found,
+                // and removes them from our list of words we are searching for. This way we don't keep looking
+                // for words we've already found.
+                std::for_each(tmp.begin(), tmp.end(), [&words](WordSolution& solution){ words.remove(solution.word);});
+            }
+        }
+    }
+    return solutions;
 }
 
 
