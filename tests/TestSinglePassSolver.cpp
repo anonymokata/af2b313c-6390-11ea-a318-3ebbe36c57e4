@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
-#include "SinglePassSolver.hpp"
+#include "src/SinglePassSolver.hpp"
 #include <algorithm>
 #include <memory>
 #include <vector>
 #include <string>
-#include "FileReader.hpp"
-#include "WordGrid.hpp"
+#include "src/FileReader.hpp"
+#include "src/WordGrid.hpp"
 #include "TestConstants.hpp"
-#include "Direction.hpp"
+#include "src/Direction.hpp"
 
 TEST(TestSinglePass, TestBuildConstructor)
 {

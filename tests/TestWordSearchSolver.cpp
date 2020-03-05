@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
-#include "NaiveSolver.hpp"
-#include "WordGrid.hpp"
-#include "FileReader.hpp"
+#include "src/NaiveSolver.hpp"
+#include "src/WordGrid.hpp"
+#include "src/FileReader.hpp"
 #include <vector>
 #include <string>
 #include <map>
 #include "TestConstants.hpp"
-#include "WordSolution.hpp"
+#include "src/WordSolution.hpp"
 #include <array>
 
 TEST(TestWordSearchSolver, TestWordSearchConstructor)

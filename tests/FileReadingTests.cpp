@@ -3,7 +3,7 @@
 #include <string>
 #include <memory>
 #include "gtest/gtest.h"
-#include "FileReader.hpp"
+#include "src/FileReader.hpp"
 
 #define PROVIDED_WORD_SEARCH "./data/ProvidedWordSearch.txt"
 #define EMPTY_FILE "./data/EmptyFile.txt"

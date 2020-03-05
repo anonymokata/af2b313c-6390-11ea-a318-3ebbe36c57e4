@@ -1,4 +1,4 @@
-#include "Direction.hpp"
+#include "src/Direction.hpp"
 #include "gtest/gtest.h"
 
 TEST(DirectionTest, TestDirectionsIncrement)

@@ -2,7 +2,7 @@
 // Created by jordan on 2/29/20.
 //
 #include "gtest/gtest.h"
-#include "Point.hpp"
+#include "src/Point.hpp"
 
 /**
  * Test that the constructor has no errors, and sets X and Y appropriately.

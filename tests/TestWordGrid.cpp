@@ -9,10 +9,10 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include "WordGrid.hpp"
-#include "FileReader.hpp"
-#include "Point.hpp"
-#include "Direction.hpp"
+#include "src/WordGrid.hpp"
+#include "src/FileReader.hpp"
+#include "src/Point.hpp"
+#include "src/Direction.hpp"
 #include "TestConstants.hpp"
 
 

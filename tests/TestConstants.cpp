@@ -1,5 +1,5 @@
 #include <vector>
-#include "Point.hpp"
+#include "src/Point.hpp"
 
 std::vector<Point> bones_solution = {
         Point(0, 6),

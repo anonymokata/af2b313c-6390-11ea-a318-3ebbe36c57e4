@@ -16,15 +16,15 @@ configure_file(${PROJECT_SOURCE_DIR}/data/NextGen.txt ${PROJECT_BINARY_DIR}/data
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra")
 
 set(SOURCE_FILES
-        ../FileReader.cpp
-        ../WordSearchSolver.cpp
-        ../WordGrid.cpp
-        ../Point.cpp
-        ../Direction.cpp
-        ../NaiveSolver.cpp
-        ../SinglePassSolver.cpp
-        ../main.cpp
-        ../WordSolution.cpp)
+        ../src/FileReader.cpp
+        ../src/WordSearchSolver.cpp
+        ../src/WordGrid.cpp
+        ../src/Point.cpp
+        ../src/Direction.cpp
+        ../src/NaiveSolver.cpp
+        ../src/SinglePassSolver.cpp
+        ../src/main.cpp
+        ../src/WordSolution.cpp)
 
 add_definitions(-DUNIT_TESTS=1)
 

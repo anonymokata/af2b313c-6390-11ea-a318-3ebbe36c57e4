@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "WordSolution.hpp"
+#include "src/WordSolution.hpp"
 #include <sstream>
 #include <string>
 

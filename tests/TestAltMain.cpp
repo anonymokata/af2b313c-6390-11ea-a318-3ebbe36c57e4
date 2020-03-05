@@ -6,7 +6,7 @@
  * through that stream. Afterwards, I set the goodbit in order to revert this.
  */
 #include "gtest/gtest.h"
-#include "main.hpp"
+#include "src/main.hpp"
 
 /**
  * Test that the argument parsing is correct.
