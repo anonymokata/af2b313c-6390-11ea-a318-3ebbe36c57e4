@@ -1,6 +1,14 @@
-//
-// Created by jordan on 3/2/20.
-//
+/**
+ * @file WordSolution.hpp
+ *
+ * A structure for holding a solution to finding a word in the word search.
+ *
+ * This structure is used to keep track of the word that was found as well as the points (coordinates)
+ * it was found. In addition an overloaded ostream operator is provided to allow easy printing of
+ * nicely formatted data for the solution.
+ *
+ * @author Jordan Sebastian
+ */
 
 #ifndef WORDSEARCHKATA_WORDSOLUTION_HPP
 #define WORDSEARCHKATA_WORDSOLUTION_HPP

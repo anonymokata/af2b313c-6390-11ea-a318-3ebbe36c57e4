@@ -1,7 +1,10 @@
-//
-// Created by jordan on 3/2/20.
-//
-
+/**
+ * @file WordSolution.cpp
+ *
+ * Implementation details of the output stream operator.
+ *
+ * @author Jordan Sebastian
+ */
 #include "WordSolution.hpp"
 
 std::ostream& operator<<(std::ostream& out, const _WordSolution& ws)
