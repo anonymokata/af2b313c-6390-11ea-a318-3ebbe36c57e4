@@ -1,6 +1,12 @@
-//
-// Created by jordan on 3/2/20.
-//
+/**
+ * @file main.hpp
+ *
+ * Declaration of alt main function.
+ *
+ * This is necessary for unit tests.
+ *
+ * @author Jordan Sebastian
+ */
 
 #ifndef WORDSEARCHKATA_MAIN_HPP
 #define WORDSEARCHKATA_MAIN_HPP

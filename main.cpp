@@ -1,4 +1,6 @@
 /**
+ * @file main.cpp
+ *
  * This file contains the actual entry point to our main program.
  *
  * This function is stripped of everything except a call to alt_main. The
@@ -7,6 +9,7 @@
  * directly test main due to a conflict. That's alright as all the logic is already tested but
  * for completeness I'm adding an alt_main.
  *
+ * @author Jordan Sebastian
  */
 
 #include <iostream>

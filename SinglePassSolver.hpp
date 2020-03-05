@@ -91,7 +91,7 @@ public:
     std::vector<WordSolution> solve() override;
     ~SinglePassSolver() override = default;
 private:
-    
+
 };
 
 
