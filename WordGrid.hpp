@@ -68,7 +68,7 @@ public:
      * Additionally and following typical convention, x refers to the column and y refers to the
      * row.
      *
-     * @param p The point to get in the grid, x, y.
+     * @param[in] p The point to get in the grid, x, y.
      * @return The value at the point provided.
      * @throws out_of_bounds if p contains an invalid x or y value.
      */
@@ -83,7 +83,7 @@ public:
      * The pointer returned from directionToOffset(Direction::north) would be Point(-1, 0). Meaning
      * adding this to Point(5, 5) would create a = Point(4, 5).
      *
-     * @param dir The cardinal direction to provide an offset for.
+     * @param[in] dir The cardinal direction to provide an offset for.
      * @return A Point object representing an offset in the correct cardinal direction.
      */
     Point directionToOffset(Direction dir);
@@ -118,7 +118,7 @@ private:
     /**
      * Parses and stors the words to search for.
      *
-     * @param wordsLine A string representing the list of words (the first line of the word grid).
+     * @param[in] wordsLine A string representing the list of words (the first line of the word grid).
      * @throws Anything that is throwable by addWord(..).
      */
     void _processSearchWords(const std::string& wordsLine);

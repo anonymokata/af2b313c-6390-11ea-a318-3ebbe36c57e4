@@ -1,4 +1,10 @@
-
+/**
+ * @file Point.cpp
+ *
+ * Definition of member functions of the Point object.
+ *
+ * @author Jordan Sebastian
+ */
 #include "Point.hpp"
 Point::Point(int x, int y) noexcept : x(x), y(y)
 {

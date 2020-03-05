@@ -14,7 +14,16 @@
 
 class Point {
 public:
+    /**
+     * Simple constructor for a Point object
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
     Point(int x, int y) noexcept;
+
+    /**
+     * Default destructor.
+     */
     ~Point() = default;
 
     /**
