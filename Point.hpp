@@ -1,13 +1,20 @@
-//
-// Created by jordan on 2/29/20.
-//
+/**
+ * @file Point.hpp
+ * This file contains the declaration of the Point class.
+ *
+ * The point class is used as an object to maintain a (X,Y) coordinate. In additon to simple storage,
+ * it provides operator overloading for the +, +=, == and != operators, allowing for comparison, as well
+ * as simple addition operations that mimic vector math.
+ *
+ * @author Jordan Sebastian
+ */
 
 #ifndef WORDSEARCHKATA_POINT_HPP
 #define WORDSEARCHKATA_POINT_HPP
 
 class Point {
 public:
-    Point(unsigned int x, unsigned int y);
+    Point(int x, int y) noexcept;
     ~Point() = default;
 
     /**
@@ -15,28 +22,28 @@ public:
      *
      * @return An unsigned integer representing the X coordinate of the Point.
      */
-    int getX() const;
+    int getX() const noexcept;
 
     /**
      * Gets the Y coordinate of the Point.
      *
      * @return An unsigned integer representing the Y coordinate of the Point.
      */
-    int getY() const;
+    int getY() const noexcept;
 
     /**
      * Set the X value.
      *
      * @param[in] new_x The new x value this Point should have.
      */
-    void setX(int new_x);
+    void setX(int new_x) noexcept;
 
     /**
      * Set the Y value
      *
      * @param new_y The new y value this Point should have.
      */
-    void setY(int new_y);
+    void setY(int new_y) noexcept;
 
     /**
      * Adds two Points together.

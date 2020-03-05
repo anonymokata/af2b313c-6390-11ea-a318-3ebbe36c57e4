@@ -1,25 +1,25 @@
 
 #include "Point.hpp"
-Point::Point(unsigned int x, unsigned int y) : x(x), y(y)
+Point::Point(int x, int y) noexcept : x(x), y(y)
 {
 }
 
-int Point::getX() const
+int Point::getX() const noexcept
 {
     return x;
 }
 
-int Point::getY() const
+int Point::getY() const noexcept
 {
     return y;
 }
 
-void Point::setX(int new_x)
+void Point::setX(int new_x) noexcept
 {
     x = new_x;
 }
 
-void Point::setY(int new_y)
+void Point::setY(int new_y) noexcept
 {
     y = new_y;
 }

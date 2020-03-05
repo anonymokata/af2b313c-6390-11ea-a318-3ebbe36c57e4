@@ -2,6 +2,11 @@
  * @file WordGrid.hpp
  *
  * This file contains the declaration of the WordGrid class, its members and properties.
+ *
+ * The WordGrid object is the in-memory representation of our word search puzzle. It is designed to allow
+ * access to individual members, and be constructed from a vector of text file lines.
+ *
+ * @author Jordan Sebastian
  */
 
 #ifndef WORDSEARCHKATA_WORDGRID_HPP
@@ -121,13 +126,13 @@ private:
     /**
      * The main 2d grid that is used for processing.
      */
-    std::vector<std::vector<char>> _2dGrid;
+    std::vector<std::vector<char>> _2d_grid;
 
     /**
      * Our processed words that we are seraching for.
      */
-    std::vector<std::string> _searchWords;
-    unsigned long int _expectedColumnLength = 0;
+    std::vector<std::string> _search_words;
+    unsigned long int _expected_column_length = 0;
 
 };
 

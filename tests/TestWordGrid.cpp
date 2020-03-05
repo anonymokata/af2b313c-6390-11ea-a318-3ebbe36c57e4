@@ -1,7 +1,7 @@
 /**
  * @file TestWordGrid.cpp
  *
- * Tests the creation and manipulation of the WordGrid object
+ * Tests the creation and manipulation of the WordGrid object.
  *
  * @author Jordan Sebastian
  */
