@@ -1,3 +1,17 @@
+/**
+ * @file NaiveSolver.hpp
+ *
+ * Definition of the NaiveSolver object.
+ *
+ * The NaiveSolver object is an object that will solve the word search
+ * puzzle using a naive, brute-force, multi-pass approach. Effectively,
+ * it looks at each point, and in all directions, if it thinks there may
+ * be a chance that the word it is looking for may be found.
+ *
+ * Needless to say, it is not the most efficient solution.
+ *
+ * @author Jordan Sebastian
+ */
 #ifndef WORDSEARCHKATA_NAIVESOLVER_HPP
 #define WORDSEARCHKATA_NAIVESOLVER_HPP
 

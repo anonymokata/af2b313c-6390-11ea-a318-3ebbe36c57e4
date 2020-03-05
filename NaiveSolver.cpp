@@ -1,4 +1,10 @@
-
+/**
+ * @file NaiveSolver.cpp
+ *
+ * Implementation details for the NaiveSolver object.
+ *
+ * @author Jordan Sebastian
+ */
 #include "NaiveSolver.hpp"
 #include "FileReader.hpp"
 #include "WordGrid.hpp"
