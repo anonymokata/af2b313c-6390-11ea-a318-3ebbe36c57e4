@@ -1,3 +1,19 @@
+/**
+ * @file SinglePassSolver.cpp
+ *
+ * Performs a solver that will find all words in a single pass of the grid.
+ *
+ * This solver is a bit more advanced than the NaiveSolver, and a bit more efficient.
+ * Instead of looking at each point, for every given word, it looks for every word that
+ * it hasn't already found, at each point. Though that doesn't sound like much of a speed
+ * up, it also looks for each word in forward and reverse order and in a top down,
+ * left-to-right manner. This means that we only ever need to check down and to the right,
+ * (east, south_east, south, south_west) to find a solution. In addition when it finds
+ * solutions, those words are removed from the words that are being searched for, meaning
+ * the search gets faster as it progresses.
+ *
+ * @author Jordan Sebastian
+ */
 #ifndef WORDSEARCHKATA_SINGLEPASSSOLVER_HPP
 #define WORDSEARCHKATA_SINGLEPASSSOLVER_HPP
 #include <vector>
@@ -75,7 +91,7 @@ public:
     std::vector<WordSolution> solve() override;
     ~SinglePassSolver() override = default;
 private:
-    std::vector<std::string> _words;
+    
 };
 
 

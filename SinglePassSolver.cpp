@@ -1,3 +1,11 @@
+/**
+ * @file SinglePassSolver.cpp
+ *
+ * Implementation details for member functions of the SinglePassSolver.
+ *
+ * @author Jordan Sebastian
+ */
+
 #include <algorithm>
 #include "SinglePassSolver.hpp"
 
