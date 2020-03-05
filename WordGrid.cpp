@@ -1,6 +1,9 @@
-//
-// Created by jordan on 2/25/20.
-//
+/**
+ * @file WordGrid.cpp
+ * Definitions for member functions of the WordGrid object.
+ *
+ * @author Jordan Sebastian
+ */
 
 #include <stdexcept>
 #include <iostream>
@@ -30,11 +33,11 @@ void WordGrid::_processGrid(const std::vector<std::string>& grid)
         {
             continue;
         }
-        _2dGrid.emplace_back(_processLine(line));
+        _2d_grid.emplace_back(_processLine(line));
     }
 
-    unsigned int column_length = _2dGrid.begin()->size();
-    if (column_length != _2dGrid.size())
+    unsigned int column_length = _2d_grid.begin()->size();
+    if (column_length != _2d_grid.size())
     {
         throw std::logic_error("Error: The grid is not a square.");
     }
@@ -62,13 +65,13 @@ std::vector<char> WordGrid::_processLine(const std::string& line)
         }
     }
 
-    if (_expectedColumnLength == 0)
+    if (_expected_column_length == 0)
     {
         // On the first line, record how long it is. We'll expect all other lines to
         // be the same length.
-        _expectedColumnLength = line.size();
+        _expected_column_length = line.size();
     }
-    else if (line.size() != _expectedColumnLength)
+    else if (line.size() != _expected_column_length)
     {
         // In the case that we already have a line length set, and this line doesn't match, raise an exception.
         throw std::logic_error("Error: Not all columns are the same size.");
@@ -111,12 +114,12 @@ void WordGrid::_processSearchWords(const std::string& wordsLine)
 
 unsigned int WordGrid::size()
 {
-    return _2dGrid.size();
+    return _2d_grid.size();
 }
 
 std::vector<std::string> WordGrid::getSearchWords()
 {
-    return _searchWords;
+    return _search_words;
 }
 
 void WordGrid::addWord(const std::string& new_word)
@@ -136,14 +139,14 @@ void WordGrid::addWord(const std::string& new_word)
                                     " the grid. Words cannot wrap around.");
     }
 
-    for (const std::string& word : _searchWords)
+    for (const std::string& word : _search_words)
     {
         if (word == new_word)
         {
             throw std::invalid_argument("Error: The word provided to addWord cannot be added as it is a duplicate.");
         }
     }
-    _searchWords.push_back(new_word);
+    _search_words.push_back(new_word);
 }
 
 char WordGrid::getPoint(const Point& p)
@@ -152,16 +155,16 @@ char WordGrid::getPoint(const Point& p)
     // These static casts look strange, but we are assessing that the X or Y value are above zero
     // to begin with. Therefore if the second part of the expression involving the static cast
     // gets executed, we are assured we are only dealing with positive values.
-    if (p.getX() < 0 || static_cast<unsigned int>(p.getX()) > _2dGrid.size() - 1)
+    if (p.getX() < 0 || static_cast<unsigned int>(p.getX()) > _2d_grid.size() - 1)
     {
         throw std::out_of_range("Error: Attempt to access a point (x) that is out of the bounds of the word search grid.");
     }
-    if (p.getY() < 0 || static_cast<unsigned int>(p.getY()) > _2dGrid[0].size() - 1)
+    if (p.getY() < 0 || static_cast<unsigned int>(p.getY()) > _2d_grid[0].size() - 1)
     {
         throw std::out_of_range("Error: Attempt to access a point (y) that is out of the bounds of the word search grid.");
     }
 
-    return _2dGrid[p.getY()][p.getX()];
+    return _2d_grid[p.getY()][p.getX()];
 }
 
 Point WordGrid::directionToOffset(Direction dir)
