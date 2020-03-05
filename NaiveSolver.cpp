@@ -1,50 +1,31 @@
 
-#include "NaiveWordSearchSolver.hpp"
+#include "NaiveSolver.hpp"
 #include "FileReader.hpp"
 #include "WordGrid.hpp"
 
 
-NaiveWordSearchSolver::NaiveWordSearchSolver(const WordGrid& grid) : WordSearchSolver(grid)
+NaiveSolver::NaiveSolver(const WordGrid& grid) : WordSearchSolver(grid)
 {
 
 }
 
-std::vector<Point> NaiveWordSearchSolver::searchAtPointAndDir(const std::string& word, const Point& starting_point, const Direction dir)
+std::vector<Point> NaiveSolver::searchAtPointAndDir(const std::string& word, const Point& starting_point, const Direction dir)
 {
     std::vector<Point> res;
     std::string found_word = "";
     auto word_iter = word.begin();
-    char value = '\0';
+    char current_letter = '\0';
+    char grid_letter = '\0';
 
-    // Ensure that our starting spot is actually a good place to begin.
-    try
+
+    Point p(starting_point.getX(), starting_point.getY());
+
+    do
     {
-        value = _grid.getPoint(starting_point);
-
-    }
-    catch (std::out_of_range& ex)
-    {
-        return res;
-    }
-
-    if (value != *word_iter)
-    {
-        return res;
-    }
-
-    // Start with the first letter.
-    found_word += *(word.begin());
-    res.push_back(starting_point);
-
-    // p will start off in a particular direction.
-    Point p = _grid.directionToOffset(dir) + starting_point;
-    word_iter += 1;
-    while (found_word != word && word_iter != word.end())
-    {
-        value = '\0';
+        current_letter = *word_iter;
         try
         {
-            value = _grid.getPoint(p);
+            grid_letter = _grid.getPoint(p);
         }
         catch (std::out_of_range& ex)
         {
@@ -53,26 +34,26 @@ std::vector<Point> NaiveWordSearchSolver::searchAtPointAndDir(const std::string&
             break;
         }
 
-        if (value != *word_iter)
+        if (grid_letter != current_letter)
         {
             // This isn't the letter we're looking for, bounce out.
             res.clear();
             break;
         }
 
-        // Save off this value, and its location.
-        found_word += value;
+        // Save off this current_letter, and its location.
+        found_word += current_letter;
         res.push_back(p);
 
         // Increment our iterator, and our point in the current direction.
         word_iter += 1;
         p = _grid.directionToOffset(dir) + p;
-    }
+    } while (found_word != word && word_iter != word.end());
 
     return res;
 }
 
-std::vector<Point> NaiveWordSearchSolver::searchAtPoint(const std::string& word, const Point& starting_point, Direction& dir_found)
+std::vector<Point> NaiveSolver::searchAtPoint(const std::string& word, const Point& starting_point, Direction& dir_found)
 {
     std::vector<Point> res;
     Direction current_direction = Direction::north;
@@ -89,7 +70,7 @@ std::vector<Point> NaiveWordSearchSolver::searchAtPoint(const std::string& word,
     return res;
 }
 
-std::vector<Point> NaiveWordSearchSolver::searchForWord(const std::string& word)
+std::vector<Point> NaiveSolver::searchForWord(const std::string& word)
 {
     std::vector<Point> res;
     Direction direction = Direction::direction_max;
@@ -116,7 +97,7 @@ std::vector<Point> NaiveWordSearchSolver::searchForWord(const std::string& word)
 }
 
 
-std::vector<WordSolution> NaiveWordSearchSolver::solve()
+std::vector<WordSolution> NaiveSolver::solve()
 {
     std::vector<WordSolution> res;
 

@@ -1,11 +1,6 @@
 #include <algorithm>
 #include "SinglePassSolver.hpp"
 
-/**
- * A simple constructor.
- * @param grid - The word grid representing what we are searching.
- * @throws runtime_error if the grid provided has no words.
- */
 SinglePassSolver::SinglePassSolver(const WordGrid& grid) : WordSearchSolver(grid)
 {
 }

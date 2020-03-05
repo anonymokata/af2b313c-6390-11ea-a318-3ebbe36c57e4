@@ -1,6 +1,5 @@
-
-#ifndef WORDSEARCHKATA_NAIVEWORDSEARCHSOLVER_HPP
-#define WORDSEARCHKATA_NAIVEWORDSEARCHSOLVER_HPP
+#ifndef WORDSEARCHKATA_NAIVESOLVER_HPP
+#define WORDSEARCHKATA_NAIVESOLVER_HPP
 
 #include <tuple>
 #include "WordGrid.hpp"
@@ -8,15 +7,15 @@
 #include "Direction.hpp"
 #include "WordSolution.hpp"
 #include "WordSearchSolver.hpp"
-class NaiveWordSearchSolver : public WordSearchSolver
+class NaiveSolver : public WordSearchSolver
 {
 public:
     /**
-     * Constructs the NaiveWordSearchSolver object.
+     * Constructs the NaiveSolver object.
      *
      * @param[in] grid The WordGrid to be used to solve.
      */
-    explicit NaiveWordSearchSolver(const WordGrid& grid);
+    explicit NaiveSolver(const WordGrid& grid);
 
     /**
      * Searchs for a word given a specific point.
@@ -59,8 +58,8 @@ public:
     /**
      * Default destructor.
      */
-    ~NaiveWordSearchSolver() = default;
+    ~NaiveSolver() = default;
 };
 
 
-#endif //WORDSEARCHKATA_NAIVEWORDSEARCHSOLVER_HPP
+#endif //WORDSEARCHKATA_NAIVESOLVER_HPP

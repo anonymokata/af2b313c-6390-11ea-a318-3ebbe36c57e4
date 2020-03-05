@@ -15,7 +15,7 @@ set(SOURCE_FILES
         FileReader.cpp
         Point.cpp
         Direction.cpp
-        NaiveWordSearchSolver.cpp
+        NaiveSolver.cpp
         WordSolution.cpp
         WordGrid.cpp
         WordSearchSolver.cpp WordSearchSolver.hpp SinglePassSolver.cpp SinglePassSolver.hpp)

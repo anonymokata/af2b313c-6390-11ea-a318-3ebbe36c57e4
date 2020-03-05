@@ -21,7 +21,7 @@ set(SOURCE_FILES
         ../WordGrid.cpp
         ../Point.cpp
         ../Direction.cpp
-        ../NaiveWordSearchSolver.cpp
+        ../NaiveSolver.cpp
         ../SinglePassSolver.cpp
         ../main.cpp
         ../WordSolution.cpp)

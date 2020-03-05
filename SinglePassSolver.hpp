@@ -19,10 +19,10 @@ public:
      * Searches for a word at a given a point and in a specific direction.
      *
      * @tparam T Type to work with, this is either a std::string::iterator or std::string::reverse_iterator.
-     * @param begin The beginning of the type T. Effectively the beginning of the string (or the opposite in reverse).
-     * @param end The ending iterator.
-     * @param start_point The start point to begin the search.
-     * @param dir The direction to search in.
+     * @param[in] begin The beginning of the type T. Effectively the beginning of the string (or the opposite in reverse).
+     * @param[in] end The ending iterator.
+     * @param[in] start_point The start point to begin the search.
+     * @param[in] dir The direction to search in.
      * @return A vector of points if the whole word is found. An empty vector if the word is not found.
      */
     template <class T>
@@ -38,11 +38,11 @@ public:
      * east, south_east will all be tested.
      *
      * @tparam T Type to work with, this is either a std::string::iterator or std::string::reverse_iterator.
-     * @param begin The beginning of the iterator object
-     * @param end The end of the iterator object
-     * @param start_point The starting point on the grid to start the search.
-     * @param dir_start The direction to start looking in (inclusive).
-     * @param dir_stop The direction to stop looking (exclusive).
+     * @param[in] begin The beginning of the iterator object
+     * @param[in] end The end of the iterator object
+     * @param[in] start_point The starting point on the grid to start the search.
+     * @param[in] dir_start The direction to start looking in (inclusive).
+     * @param[in] dir_stop The direction to stop looking (exclusive).
      * @return
      */
     template <class T>
@@ -59,8 +59,8 @@ public:
      * grid locations.
      *
      *
-     * @param words The words to search for
-     * @param start_point The starting spot to start the search.
+     * @param[in] words The words to search for
+     * @param[in] start_point The starting spot to start the search.
      * @return A vector of WordSelections, that were found at this point. This may be empty if none are found.
      */
     std::vector<WordSolution> searchWordsInGridAtPoint(const std::list<std::string>& words, Point start_point);
