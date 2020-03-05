@@ -50,7 +50,7 @@ TEST(TestSinglePass, TestFindWordInDirectionRange)
 
 }
 
-TEST(TestSinglePass, TestFindWordInGrid)
+TEST(TestSinglePass, TestFindWordsInGridAtPoint)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
     std::vector<std::string> file_lines = reader.readFileLines();
@@ -75,4 +75,24 @@ TEST(TestSinglePass, TestFindWordInGrid)
     ASSERT_EQ(solution.size(), 1);
     ASSERT_STREQ(solution[0].word.c_str(), "SULU");
 
+}
+
+TEST(TestSinglePass, TestFindWordsInGrid)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    WordGrid word_grid(file_lines);
+
+    SinglePassSolver solver(word_grid);
+    std::list<std::string> words {
+            std::string("BONES"),
+            std::string("KHAN"),
+            std::string("KIRK"),
+            std::string("SPOCK"),
+            std::string("SULU"),
+            std::string("UHURA"),
+    };
+
+    std::vector<WordSolution> all_solutions = solver.solve();
+    ASSERT_EQ(all_solutions.size(), words.size());
 }
