@@ -1,6 +1,16 @@
-//
-// Created by jordan on 2/29/20.
-//
+/**
+ * @file Direction.cpp
+ *
+ * Implementation of the direction enumerator operator.
+ *
+ * This operator allows us to sanely iterate through the various
+ * cardinal directions which can be useful to our algorithm.
+ *
+ * @note There is supposedly a way to do this using templating, however, I think
+ * that this syntax is much more easy to read.
+ *
+ * @author Jordan Sebastian
+ */
 
 #include "Direction.hpp"
 Direction& operator++(Direction& d)

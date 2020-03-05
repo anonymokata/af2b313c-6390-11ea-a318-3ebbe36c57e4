@@ -1,6 +1,14 @@
-//
-// Created by jordan on 2/29/20.
-//
+/**
+ * @file Direction.hpp
+ *
+ * This file is the declaration of the Direction enumeration.
+ *
+ * This enumeration is a way to describe in the offset of a given point. If I have a Point at 5, 5
+ * and I want the value 4, 5, this would be easily represented by "North". This enumeration combined with
+ * the function getOffsetByDirection() provide a means of converting these two values.
+ *
+ * @author Jordan Sebastian
+ */
 
 #ifndef WORDSEARCHKATA_DIRECTION_HPP
 #define WORDSEARCHKATA_DIRECTION_HPP
