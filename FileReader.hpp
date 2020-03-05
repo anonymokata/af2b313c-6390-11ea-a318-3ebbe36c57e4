@@ -3,7 +3,7 @@
  *
  * Reads a given file, line by line.
  *
- * This object is simply responsibile for opening and ingesting a given file.
+ * This object is simply responsible for opening and ingesting a given file.
  * The FileReader object provides only one interface to get the whole file,
  * as a vector representing each line in the file.
  *
