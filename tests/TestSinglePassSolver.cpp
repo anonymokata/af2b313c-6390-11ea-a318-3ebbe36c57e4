@@ -29,7 +29,9 @@ TEST(TestSinglePass, TestFindWordInDirection)
 
     SinglePassSolver solver(word_grid);
     std::string word = "SPOCK";
-    std::vector<Point> results = solver.searchAtPointAndDir(word.begin(), word.end(), Point(2,1), Direction::south_east);
+    std::vector<Point> results;
+    solver.searchAtPointAndDir(word.begin(), word.end(), Point(2, 1),
+                                                            Direction::south_east, results);
     ASSERT_EQ(results.size(), 5);
     ASSERT_TRUE(std::equal(results.begin(), results.end(), spock_solution.begin()));
 }
@@ -42,10 +44,14 @@ TEST(TestSinglePass, TestFindWordInDirectionRange)
 
     SinglePassSolver solver(word_grid);
     std::string word = "SPOCK";
-    std::vector<Point> results = solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::east, Direction::direction_max);
+    std::vector<Point> results;
+    solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::east,
+                                                                 Direction::direction_max, results);
     ASSERT_EQ(results.size(), 5);
     results.clear();
-    results = solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::south, Direction::direction_max);
+
+    solver.searchAtPointAndDirRange(word.begin(), word.end(), Point(2, 1), Direction::south,
+                                              Direction::direction_max, results);
     ASSERT_EQ(results.size(), 0);
 
 }
@@ -67,11 +73,12 @@ TEST(TestSinglePass, TestFindWordsInGridAtPoint)
     };
 
 
-    std::vector<WordSolution> solution = solver.searchWordsInGridAtPoint(words, Point(1, 7));
+    std::vector<WordSolution> solution;
+    solver.searchWordsInGridAtPoint(words, Point(1, 7), solution);
     ASSERT_EQ(solution.size(), 1);
     ASSERT_STREQ(solution[0].word.c_str(), "KIRK");
-
-    solution = solver.searchWordsInGridAtPoint(words, Point(0, 0));
+    solution.clear();
+    solver.searchWordsInGridAtPoint(words, Point(0, 0), solution);
     ASSERT_EQ(solution.size(), 1);
     ASSERT_STREQ(solution[0].word.c_str(), "SULU");
 

@@ -7,6 +7,14 @@
  */
 #include "WordSolution.hpp"
 
+#include <utility>
+
+_WordSolution::_WordSolution(std::string  word, std::vector<Point>  points)
+    : word(std::move(word)), points(std::move(points))
+{
+
+}
+
 std::ostream& operator<<(std::ostream& out, const _WordSolution& ws)
 {
     out << ws.word << ": ";

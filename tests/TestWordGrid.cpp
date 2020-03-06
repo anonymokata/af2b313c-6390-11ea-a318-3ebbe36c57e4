@@ -296,3 +296,12 @@ TEST(WordGridTests, TestDirectionToPointOffset)
     EXPECT_EQ(p.getY(), 4);
 
 }
+
+
+TEST(TestWordGrid, TestGetMaxLengthStringSize)
+{
+    FileReader reader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> file_lines = reader.readFileLines();
+    WordGrid word_grid(file_lines);
+    ASSERT_EQ(word_grid.getLongestWordLength(), 6);
+}

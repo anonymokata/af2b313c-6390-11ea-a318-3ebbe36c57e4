@@ -89,6 +89,13 @@ public:
     Point directionToOffset(Direction dir);
 
     /**
+     * Returns the size of the largest string in the word list.
+     *
+     * @return The size of the longest word in the word list.
+     */
+    unsigned long int getLongestWordLength();
+
+    /**
      * Default destructor.
      */
     ~WordGrid() = default;

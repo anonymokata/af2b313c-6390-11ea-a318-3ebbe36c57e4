@@ -5,7 +5,7 @@
  *
  * @author Jordan Sebastian
  */
-
+#include <iostream>
 #include <algorithm>
 #include "SinglePassSolver.hpp"
 
@@ -14,19 +14,15 @@ SinglePassSolver::SinglePassSolver(const WordGrid& grid) : WordSearchSolver(grid
 }
 
 template <class T>
-std::vector<Point> SinglePassSolver::searchAtPointAndDir(T begin, T end,
-                                                         const Point& start_point,    const Direction dir)
+void SinglePassSolver::searchAtPointAndDir(T begin, T end, const Point &start_point, const Direction dir,
+                                                         std::vector<Point> &points)
 {
-
-    std::vector<Point> res;
-
     char current_letter = *begin;
     char grid_letter = '\0';
 
-    Point current_point = Point(start_point.getX(), start_point.getY());
+    Point current_point = start_point;
     do
     {
-
         current_letter = *begin;
         try
         {
@@ -35,68 +31,72 @@ std::vector<Point> SinglePassSolver::searchAtPointAndDir(T begin, T end,
         catch (std::out_of_range& ex)
         {
             // We have gone out of bounds. Get out.
-            res.clear();
+            points.clear();
             break;
         }
         if (current_letter != grid_letter)
         {
-            res.clear();
+            points.clear();
             break;
         }
 
-        res.push_back(current_point);
+        points.emplace_back(current_point);
         current_point = _grid.directionToOffset(dir) + current_point;
         begin++;
     } while (begin < end);
 
-    return res;
 }
 
 template <class T>
-std::vector<Point> SinglePassSolver::searchAtPointAndDirRange(T begin, T end,
-                                            const Point& start_point,
-                                            const Direction dir_start, const Direction dir_stop)
+void
+SinglePassSolver::searchAtPointAndDirRange(T begin, T end, const Point &start_point, const Direction dir_start,
+                                           const Direction dir_stop, std::vector<Point> &points)
 {
-    std::vector<Point> res;
     for (auto current_direction = dir_start; current_direction < dir_stop; ++current_direction)
     {
-        res = searchAtPointAndDir(begin, end, start_point, current_direction);
-        if (!res.empty())
+        searchAtPointAndDir(begin, end, start_point, current_direction, points);
+        if (!points.empty())
         {
             break;
         }
     }
-    return res;
 }
 
-std::vector<WordSolution> SinglePassSolver::searchWordsInGridAtPoint(const std::list<std::string>& words, Point start_point)
+int SinglePassSolver::searchWordsInGridAtPoint(const std::list<std::string> &words, const Point& start_point,
+                                               std::vector<WordSolution> &solutions)
 {
-    std::vector<WordSolution> res;
+    std::vector<Point> pts;
+    // Pre-allocate the room that our points will need.
+    int count = 0;
+    pts.reserve(_grid.getLongestWordLength());
     for (auto word : words)
     {
-        std::vector<Point> pts;
+
         for (int i = 0; i < 2; i++)
         {
-            WordSolution sol;
+
             if (i == 0)
             {
-                pts = searchAtPointAndDirRange(word.begin(), word.end(), start_point, Direction::east, Direction::west);
+                searchAtPointAndDirRange(word.cbegin(), word.cend(), start_point, Direction::east,
+                        Direction::west,pts);
             }
             else
             {
-                pts = searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east, Direction::west);
+                searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east,
+                        Direction::west, pts);
             }
             if (!pts.empty())
             {
                 // We found this word, continue on.
-                sol.word = word;
-                sol.points = pts;
-                res.push_back(sol);
+
+                solutions.emplace_back(word, pts);
+                pts.clear();
+                count++;
                 break;
             }
         }
     }
-    return res;
+    return count;
 }
 
 std::vector<WordSolution> SinglePassSolver::solve()
@@ -105,23 +105,34 @@ std::vector<WordSolution> SinglePassSolver::solve()
     std::list<std::string> words(words_vec.begin(), words_vec.end());
     std::vector<WordSolution> solutions;
 
+
+    // We know how many solutions we ought to have.
+    solutions.reserve(words.size());
+
     for (unsigned int y = 0; y < _grid.size(); y++)
     {
         for (unsigned int x = 0; x < _grid.size(); x++)
         {
             Point current_point(x, y);
-            std::vector<WordSolution> tmp = searchWordsInGridAtPoint(words, current_point);
-            if (!tmp.empty())
+            int count = searchWordsInGridAtPoint(words, current_point, solutions);
+            // Remove any words that were found.
+            for (int i = 0; i < count; i++)
             {
-                solutions.insert(solutions.end(), tmp.begin(), tmp.end());
-                // A bit tricky, but not as bad as it may seem. This takes all of the solutions we just found,
-                // and removes them from our list of words we are searching for. This way we don't keep looking
-                // for words we've already found.
-                std::for_each(tmp.begin(), tmp.end(), [&words](WordSolution& solution){ words.remove(solution.word);});
+                auto it = solutions.rbegin() + i;
+                words.remove(it->word);
             }
         }
     }
     return solutions;
 }
 
+template void SinglePassSolver::searchAtPointAndDirRange(
+        std::string::iterator begin, std::string::iterator end,
+        const Point &start_point, const Direction dir_start,
+        const Direction dir_stop, std::vector<Point> &points);
+
+template void SinglePassSolver::searchAtPointAndDirRange(
+        std::string::reverse_iterator begin, std::string::reverse_iterator end,
+        const Point &start_point, const Direction dir_start,
+        const Direction dir_stop, std::vector<Point> &points);
 

@@ -13,6 +13,7 @@
 #ifndef WORDSEARCHKATA_WORDSOLUTION_HPP
 #define WORDSEARCHKATA_WORDSOLUTION_HPP
 #include <string>
+#include <utility>
 #include <vector>
 #include <iostream>
 #include "Point.hpp"
@@ -20,6 +21,7 @@
 
 typedef struct _WordSolution
 {
+    _WordSolution(std::string  word, std::vector<Point>  points);
     std::string word;
     std::vector<Point> points;
 

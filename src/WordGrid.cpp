@@ -193,3 +193,16 @@ Point WordGrid::directionToOffset(Direction dir)
     // Unnecessary, but G++ complains about reaching the end of a non-void function.
     return Point(0, 0);
 }
+
+unsigned long int WordGrid::getLongestWordLength()
+{
+    unsigned long int max = 0;
+    for (std::string word : _search_words)
+    {
+        if (word.length() > max)
+        {
+            max = word.length();
+        }
+    }
+    return max;
+}

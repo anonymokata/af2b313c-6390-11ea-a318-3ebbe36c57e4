@@ -3,14 +3,15 @@
  *
  * Performs a solver that will find all words in a single pass of the grid.
  *
- * This solver is a bit more advanced than the NaiveSolver, and a bit more efficient.
- * Instead of looking at each point, for every given word, it looks for every word that
- * it hasn't already found, at each point. Though that doesn't sound like much of a speed
- * up, it also looks for each word in forward and reverse order and in a top down,
- * left-to-right manner. This means that we only ever need to check down and to the right,
- * (east, south_east, south, south_west) to find a solution. In addition when it finds
- * solutions, those words are removed from the words that are being searched for, meaning
- * the search gets faster as it progresses.
+ * This solver was intended to be a "smarter" way to solve the puzzle.
+ * However, it is infact wildly less efficient. The general idea was this:
+ * If I search for a word both forwards and backwards at a given point in the grid,
+ * and I search top to bottom, left to right, I can reduce the directions I search in
+ * to be only east, south_east, south, and south west. This means I'll search in fewer
+ * directions.
+ *
+ * However, the management of all of the data appears to be a problem
+ * for this algorithm, and no amount of performance tweaking seems to solve it.
  *
  * @author Jordan Sebastian
  */
@@ -42,7 +43,8 @@ public:
      * @return A vector of points if the whole word is found. An empty vector if the word is not found.
      */
     template <class T>
-    std::vector<Point> searchAtPointAndDir(T begin, T end, const Point& start_point, const Direction dir);
+    void searchAtPointAndDir(T begin, T end, const Point &start_point, const Direction dir,
+                                           std::vector<Point> &points);
 
     /**
      * Searches for a word given a point and a range of directions to look in.
@@ -62,9 +64,8 @@ public:
      * @return
      */
     template <class T>
-    std::vector<Point> searchAtPointAndDirRange(T begin, T end,
-                                                const Point& start_point,
-                                                const Direction dir_start, const Direction dir_stop);
+    void searchAtPointAndDirRange(T begin, T end, const Point &start_point, const Direction dir_start,
+                                                const Direction dir_stop, std::vector<Point> &points);
 
     /**
      * Searches for multiples words, given a starting spot.
@@ -79,7 +80,8 @@ public:
      * @param[in] start_point The starting spot to start the search.
      * @return A vector of WordSelections, that were found at this point. This may be empty if none are found.
      */
-    std::vector<WordSolution> searchWordsInGridAtPoint(const std::list<std::string>& words, Point start_point);
+    int searchWordsInGridAtPoint(const std::list<std::string> &words, const Point& start_point,
+                                                       std::vector<WordSolution> &solutions);
 
     /**
      * Solves the puzzle.

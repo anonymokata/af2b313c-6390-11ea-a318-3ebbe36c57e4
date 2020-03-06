@@ -14,12 +14,13 @@
 
 #include <iostream>
 #include "WordGrid.hpp"
+#include "SinglePassSolver.hpp"
 #include "NaiveSolver.hpp"
 #include "FileReader.hpp"
 #include <vector>
 #include <string>
 #include <memory>
-
+#include <chrono>
 /**
  * This is some macro trickery to switch out the name of 'main' to avoid
  * a name conflict when we compile main.cpp into the gtest suite. If we don't
@@ -86,10 +87,9 @@ int MAIN(int argc, char* argv[])
     NaiveSolver solver(*grid);
     std::vector<WordSolution> solutions = solver.solve();
 
-    for (auto solution : solutions)
+    for (auto& solution : solutions)
     {
         std::cout << solution << std::endl;
     }
-
     return SUCCESS;
 }
