@@ -4,14 +4,18 @@
  * Performs a solver that will find all words in a single pass of the grid.
  *
  * This solver was intended to be a "smarter" way to solve the puzzle.
- * However, it is infact wildly less efficient. The general idea was this:
+ * However, it is in fact on par or only slightly faster than the Naive Solver.
+ *
+ * The general idea was this:
  * If I search for a word both forwards and backwards at a given point in the grid,
  * and I search top to bottom, left to right, I can reduce the directions I search in
  * to be only east, south_east, south, and south west. This means I'll search in fewer
  * directions.
  *
- * However, the management of all of the data appears to be a problem
- * for this algorithm, and no amount of performance tweaking seems to solve it.
+ * However, after much optimization and several runs, solve() function seems to run in about ~650 microseconds. However,
+ * compared to the NaiveSolver which runs in ~680 microseconds. It's possible that
+ * I could even optimize the NaiveSolver to be even faster than it currently is, but the point is that it's
+ * Naive.
  *
  * @author Jordan Sebastian
  */

@@ -13,7 +13,7 @@ configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchMultipleDelimitersBetweenCha
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchInvalidSearchWordsDosCommas.txt ${PROJECT_BINARY_DIR}/data/WordSearchInvalidSearchWordsDosCommas.txt  COPYONLY)
 configure_file(${PROJECT_SOURCE_DIR}/data/WordSearchInvalidSearchWordsLength.txt ${PROJECT_BINARY_DIR}/data/WordSearchInvalidSearchWordsLength.txt  COPYONLY)
 configure_file(${PROJECT_SOURCE_DIR}/data/NextGen.txt ${PROJECT_BINARY_DIR}/data/NextGen.txt  COPYONLY)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra -fprofile-arcs -ftest-coverage")
 
 set(SOURCE_FILES
         ../src/FileReader.cpp

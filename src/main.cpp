@@ -42,6 +42,8 @@
 #define INVALID_PARAMETERS 1
 #define INVALID_DATA 2
 
+using namespace std::chrono;
+
 /**
  * Main entrypoint for the program.
  *
@@ -53,7 +55,7 @@
  */
 int MAIN(int argc, char* argv[])
 {
-    if (argc < 2 )
+    if (argc < 2)
     {
         std::cout << "Usage: WordSearchKata <word_grid_filename>" << std::endl;
         return INVALID_PARAMETERS;
@@ -65,7 +67,7 @@ int MAIN(int argc, char* argv[])
     {
         reader = std::make_unique<FileReader>(filename);
     }
-    catch (std::runtime_error& ex)
+    catch (std::runtime_error &ex)
     {
         std::cout << ex.what() << std::endl;
         return INVALID_PARAMETERS;
@@ -78,18 +80,25 @@ int MAIN(int argc, char* argv[])
     {
         grid = std::make_unique<WordGrid>(lines);
     }
-    catch (std::logic_error& ex)
+    catch (std::logic_error &ex)
     {
         std::cout << ex.what() << std::endl;
         return INVALID_DATA;
     }
 
-    NaiveSolver solver(*grid);
-    std::vector<WordSolution> solutions = solver.solve();
+    SinglePassSolver solver(*grid);
+
+    std::vector<WordSolution> solutions;
+
+    auto start_time = high_resolution_clock::now();
+    solutions = solver.solve();
+    auto end_time = high_resolution_clock::now();
 
     for (auto& solution : solutions)
     {
         std::cout << solution << std::endl;
     }
+
+    std::cout << "Duration: " << duration_cast<microseconds>(end_time - start_time).count() << std::endl;
     return SUCCESS;
 }

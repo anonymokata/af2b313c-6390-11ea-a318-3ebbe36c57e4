@@ -17,10 +17,15 @@ template <class T>
 void SinglePassSolver::searchAtPointAndDir(T begin, T end, const Point &start_point, const Direction dir,
                                                          std::vector<Point> &points)
 {
+    // If we are in this function, we are already certain that the first letter matches.
+    points.push_back(start_point);
+    begin += 1;
+
     char current_letter = *begin;
     char grid_letter = '\0';
 
-    Point current_point = start_point;
+    Point current_point = _grid.directionToOffset(dir) + start_point;
+
     do
     {
         current_letter = *begin;
@@ -69,7 +74,7 @@ int SinglePassSolver::searchWordsInGridAtPoint(const std::list<std::string> &wor
     // Pre-allocate the room that our points will need.
     int count = 0;
     pts.reserve(_grid.getLongestWordLength());
-    for (auto word : words)
+    for (const auto& word : words)
     {
 
         for (int i = 0; i < 2; i++)
@@ -77,11 +82,21 @@ int SinglePassSolver::searchWordsInGridAtPoint(const std::list<std::string> &wor
 
             if (i == 0)
             {
+                // Ensure that we should even bother
+                if (_grid.getPoint(start_point) != word.cbegin()[0] )
+                {
+                    continue;
+                }
                 searchAtPointAndDirRange(word.cbegin(), word.cend(), start_point, Direction::east,
                         Direction::west,pts);
             }
             else
             {
+                // Ensure we should even bother.
+                if (_grid.getPoint(start_point) != word.crbegin()[0] )
+                {
+                    continue;
+                }
                 searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east,
                         Direction::west, pts);
             }
@@ -108,12 +123,13 @@ std::vector<WordSolution> SinglePassSolver::solve()
 
     // We know how many solutions we ought to have.
     solutions.reserve(words.size());
-
+    Point current_point(0, 0);
     for (unsigned int y = 0; y < _grid.size(); y++)
     {
         for (unsigned int x = 0; x < _grid.size(); x++)
         {
-            Point current_point(x, y);
+            current_point.setY(y);
+            current_point.setX(x);
             int count = searchWordsInGridAtPoint(words, current_point, solutions);
             // Remove any words that were found.
             for (int i = 0; i < count; i++)

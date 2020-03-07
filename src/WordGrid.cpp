@@ -155,16 +155,19 @@ char WordGrid::getPoint(const Point& p)
     // These static casts look strange, but we are assessing that the X or Y value are above zero
     // to begin with. Therefore if the second part of the expression involving the static cast
     // gets executed, we are assured we are only dealing with positive values.
-    if (p.getX() < 0 || static_cast<unsigned int>(p.getX()) > _2d_grid.size() - 1)
+    int x = p.getX();
+    int y = p.getY();
+    unsigned int max_grid_size = _2d_grid.size() - 1;
+    if (x < 0 || static_cast<unsigned int>(x) > max_grid_size)
     {
         throw std::out_of_range("Error: Attempt to access a point (x) that is out of the bounds of the word search grid.");
     }
-    if (p.getY() < 0 || static_cast<unsigned int>(p.getY()) > _2d_grid[0].size() - 1)
+    if (y < 0 || static_cast<unsigned int>(y) > max_grid_size)
     {
         throw std::out_of_range("Error: Attempt to access a point (y) that is out of the bounds of the word search grid.");
     }
 
-    return _2d_grid[p.getY()][p.getX()];
+    return _2d_grid[y][x];
 }
 
 Point WordGrid::directionToOffset(Direction dir)
