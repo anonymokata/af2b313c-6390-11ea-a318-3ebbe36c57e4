@@ -1,11 +1,11 @@
 # Word Search Kata
 
 ## Contents
-- [Building](#building-)
+- [Building](#building)
    - [Ubuntu 18.04](#ubuntu-1804)
-   - [Other Linux / Darwin](#otherlinux)
+   - [Other Linux / Darwin](#other-linux--darwin)
 - [Running](#running)
-   - [Unit Tests](#unittests)
+   - [Unit Tests](#unit-tests)
    - [Main Application](#main-application)
 
 ## Building
@@ -34,7 +34,7 @@ instructions. Stray away from them only if you must. However, as Olmec said: htt
 **NOTE**: This will require super-user access in order to download the dependencies via apt and 
 install them.
 
-### Other Linux / Darwin <a href="#otherlinux"></a>
+### Other Linux / Darwin
 Though untested building on other linux versions, as well as Darwin (OS X) can be generally
 accomplished through the following steps:
 
@@ -63,7 +63,7 @@ To run the application see [Running](#running)
 If the directions above have successfully been executed, there are two main binaries that can be 
 run.
 
-### Unit Tests <a href="#unittests"></a>
+### Unit Tests
 Unit tests are best run by the helper script 
 ```bash
 $> ./run_tests.sh
@@ -79,7 +79,7 @@ to the directory in which the `run_tests` binary was built, namely:
 ``` 
 Where `WordSearchKata` is the overall project directory. 
 
-### Main Application <a href="main-application"></a>
+### Main Application
 The main application is found in `WordSearchKata/bin/WordSearchKata`. It takes just one parameter,
 which is the file you wish to ingest. From the binary's directory simply execute the following:
 
