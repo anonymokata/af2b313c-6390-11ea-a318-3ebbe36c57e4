@@ -8,7 +8,7 @@
    - [Unit Tests](#unittests)
    - [Main Application](#main-application)
 
-## (#Building)
+## Building
 
 This code can be built on any C++14 compliant compiler, and with CMake version >= 3.0. 
 
@@ -16,7 +16,7 @@ This code can be built on any C++14 compliant compiler, and with CMake version >
 actually type these characters. You will type everything after it.
 
 
-### Ubuntu 18.04 <a href="#ubuntu1804"></a>
+### Ubuntu 18.04
 
 **IMPORTANT**: The build path for Ubuntu 18.04 is the most tested and supported path in these 
 instructions. Stray away from them only if you must. However, as Olmec said: https://youtu.be/Bx_BlcZsVW0
