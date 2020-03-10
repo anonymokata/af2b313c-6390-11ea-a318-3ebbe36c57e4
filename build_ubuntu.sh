@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
+# WordSearchKata Ubuntu build script.
+# Tested on 18.04.
+# Install all dependencies and build tests, and the WordSearchKata.
+
+
 sudo apt-get -y update
 sudo apt-get -y install build-essential cmake
 
-current_dir=`pwd`
+current_dir=$(pwd)
 
 # Set up a build directory
 mkdir -p ./bin
-cd ./bin
+cd ./bin || exit
 
 # Configure make files
 cmake ../
@@ -17,7 +22,7 @@ make run_tests
 make WordSearchKata
 
 # Execute our unit tests.
-cd ./tests
+cd ./tests || exit
 ./run_tests
 
 # Ensure that the unit tests ran correctly.
@@ -25,7 +30,7 @@ exit_status=$?
 if [ $exit_status -ne 0 ]; then
 	echo "[-] Error: Unit tests may have failed. Check previous errors."
 	echo "[-] You can still attempt to run ./bin/WordSearchKata, if you'd like"
-	cd $current_dir
+	cd "$current_dir" || exit
 	exit 1
 fi
 
@@ -41,4 +46,4 @@ echo "[+] ./bin/WordSearchKata <input_file>"
 echo "[+]"
 echo "[+] Note: There are several example word searches to try in ./bin/data"
 echo "Thank you for your time."
-cd $current_dir
+cd "$current_dir" || exit
