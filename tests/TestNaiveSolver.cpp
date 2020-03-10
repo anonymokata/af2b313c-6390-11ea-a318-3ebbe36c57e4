@@ -133,6 +133,17 @@ TEST(TestnaiveSolver, TestNaiveSolverFindWordEmptyString)
     ASSERT_EQ(pts.size(), 0);
 }
 
+TEST(TestnaiveSolver, TestNaiveSolverFindWordTooSmallString)
+{
+    FileReader fileReader("./data/ProvidedWordSearch.txt");
+    std::vector<std::string> lines = fileReader.readFileLines();
+    WordGrid grid(lines);
+    NaiveSolver solver(grid);
+    std::vector<Point> pts;
+
+    ASSERT_THROW(pts = solver.searchForWord("A"), std::logic_error);
+    ASSERT_EQ(pts.size(), 0);
+}
 
 TEST(TestNaiveSolver, TestWordSearchSolvePuzzle)
 {

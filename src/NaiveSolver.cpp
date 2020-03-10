@@ -83,6 +83,10 @@ std::vector<Point> NaiveSolver::searchForWord(const std::string& word)
     {
         throw std::logic_error("Error: searchForWord cannot find an empty string.");
     }
+    if (word.size() < 2)
+    {
+        throw std::logic_error("Error: Searching for a string requires a string that is at least two characters.");
+    }
 
     std::vector<Point> res;
     Direction direction = Direction::direction_max;
