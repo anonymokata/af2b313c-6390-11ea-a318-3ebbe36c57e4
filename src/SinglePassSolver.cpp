@@ -76,39 +76,25 @@ int SinglePassSolver::searchWordsInGridAtPoint(const std::list<std::string> &wor
     pts.reserve(_grid.getLongestWordLength());
     for (const auto& word : words)
     {
-
-        for (int i = 0; i < 2; i++)
+        char current_val = _grid.getPoint(start_point);
+        if (current_val == word.cbegin()[0])
         {
+            searchAtPointAndDirRange(word.cbegin(), word.cend(), start_point, Direction::east,
+                                     Direction::west,pts);
+        }
+        if (current_val == word.crbegin()[0])
+        {
+            searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east,
+                                     Direction::west, pts);
+        }
+        if (!pts.empty())
+        {
+            // We found this word, continue on.
 
-            if (i == 0)
-            {
-                // Ensure that we should even bother
-                if (_grid.getPoint(start_point) != word.cbegin()[0] )
-                {
-                    continue;
-                }
-                searchAtPointAndDirRange(word.cbegin(), word.cend(), start_point, Direction::east,
-                        Direction::west,pts);
-            }
-            else
-            {
-                // Ensure we should even bother.
-                if (_grid.getPoint(start_point) != word.crbegin()[0] )
-                {
-                    continue;
-                }
-                searchAtPointAndDirRange(word.crbegin(), word.crend(), start_point, Direction::east,
-                        Direction::west, pts);
-            }
-            if (!pts.empty())
-            {
-                // We found this word, continue on.
-
-                solutions.emplace_back(word, pts);
-                pts.clear();
-                count++;
-                break;
-            }
+            solutions.emplace_back(word, pts);
+            pts.clear();
+            count++;
+            break;
         }
     }
     return count;
