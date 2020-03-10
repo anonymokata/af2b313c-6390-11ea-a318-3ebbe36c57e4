@@ -1,12 +1,14 @@
 # Word Search Kata
 
 ## Contents
-- [Building](#building)
+- [Building](#building-)
    - [Ubuntu 18.04](#ubuntu-1804)
    - [Other Linux / Darwin](#otherlinux)
 - [Running](#running)
+   - [Unit Tests](#unittests)
+   - [Main Application](#main-application)
 
-## <a href="#building"></a>Building
+## (#Building)
 
 This code can be built on any C++14 compliant compiler, and with CMake version >= 3.0. 
 
@@ -14,7 +16,7 @@ This code can be built on any C++14 compliant compiler, and with CMake version >
 actually type these characters. You will type everything after it.
 
 
-### Ubuntu 18.04 <a href="#ubuntu1804">
+### Ubuntu 18.04 <a href="#ubuntu1804"></a>
 
 **IMPORTANT**: The build path for Ubuntu 18.04 is the most tested and supported path in these 
 instructions. Stray away from them only if you must. However, as Olmec said: https://youtu.be/Bx_BlcZsVW0
@@ -29,9 +31,10 @@ instructions. Stray away from them only if you must. However, as Olmec said: htt
    $> ./build_ubuntu.sh
    ```
 
-**NOTE**: This will require super-user access in order to download the dependencies via apt.
+**NOTE**: This will require super-user access in order to download the dependencies via apt and 
+install them.
 
-### <a href="#otherlinux"></a>Other Linux / Darwin
+### Other Linux / Darwin <a href="#otherlinux"></a>
 Though untested building on other linux versions, as well as Darwin (OS X) can be generally
 accomplished through the following steps:
 
@@ -60,7 +63,7 @@ To run the application see [Running](#running)
 If the directions above have successfully been executed, there are two main binaries that can be 
 run.
 
-### Unit Tests
+### Unit Tests <a href="#unittests"></a>
 Unit tests are best run by the helper script 
 ```bash
 $> ./run_tests.sh
@@ -76,7 +79,7 @@ to the directory in which the `run_tests` binary was built, namely:
 ``` 
 Where `WordSearchKata` is the overall project directory. 
 
-### Main Application
+### Main Application <a href="main-application"></a>
 The main application is found in `WordSearchKata/bin/WordSearchKata`. It takes just one parameter,
 which is the file you wish to ingest. From the binary's directory simply execute the following:
 
