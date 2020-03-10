@@ -28,7 +28,7 @@ set(SOURCE_FILES
 
 add_definitions(-DUNIT_TESTS=1)
 
-set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestWordSearchSolver.cpp FileReadingTests.cpp TestAltMain.cpp TestWordSolution.cpp TestSinglePassSolver.cpp TestConstants.cpp)
+set(TEST_FILES TestWordGrid.cpp TestPoint.cpp TestDirections.cpp TestNaiveSolver.cpp FileReadingTests.cpp TestAltMain.cpp TestWordSolution.cpp TestSinglePassSolver.cpp TestConstants.cpp)
 
 add_executable(run_tests ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(run_tests gtest gtest_main)

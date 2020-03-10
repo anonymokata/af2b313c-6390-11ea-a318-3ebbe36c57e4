@@ -78,8 +78,15 @@ std::vector<Point> NaiveSolver::searchAtPoint(const std::string& word, const Poi
 
 std::vector<Point> NaiveSolver::searchForWord(const std::string& word)
 {
+
+    if (word.empty())
+    {
+        throw std::logic_error("Error: searchForWord cannot find an empty string.");
+    }
+
     std::vector<Point> res;
     Direction direction = Direction::direction_max;
+
     char first_letter = *(word.begin());
     for (unsigned int y = 0; y < _grid.size(); y++)
     {
