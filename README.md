@@ -26,7 +26,7 @@ instructions. Stray away from them only if you must. However, as Olmec said: htt
 
 This guide assumes that you have an Ubuntu 18.04 environment set up with git.  
 
-1. `git clone` the repository.
+1. `git clone git@github.com:CyberSmash/WordSearchKata.git` the repository.
 1. Navigate to the newly created `WordSearchKata` directory in your current directory
 1. Run the build_ubuntu.sh script.
    - This script will automatically install any dependencies that Ubuntu is missing.

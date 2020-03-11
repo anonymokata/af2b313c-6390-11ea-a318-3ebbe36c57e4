@@ -89,16 +89,13 @@ int MAIN(int argc, char* argv[])
     SinglePassSolver solver(*grid);
 
     std::vector<WordSolution> solutions;
-
-    auto start_time = high_resolution_clock::now();
+    
     solutions = solver.solve();
-    auto end_time = high_resolution_clock::now();
 
     for (auto& solution : solutions)
     {
         std::cout << solution << std::endl;
     }
 
-    std::cout << "Duration: " << duration_cast<microseconds>(end_time - start_time).count() << std::endl;
     return SUCCESS;
 }
