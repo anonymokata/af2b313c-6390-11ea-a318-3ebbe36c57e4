@@ -297,7 +297,9 @@ TEST(WordGridTests, TestDirectionToPointOffset)
 
 }
 
-
+/**
+ * Test that we can find, and return the correct size of the largest string in the word search.
+ */
 TEST(TestWordGrid, TestGetMaxLengthStringSize)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");

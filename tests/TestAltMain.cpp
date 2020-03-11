@@ -1,9 +1,13 @@
 /**
+ * @file TestAltMain.cpp
+ *
  * This file tests main functionality.
  *
  * @note In some tests, the main program will output data. This kinda makes the test output look bad, and
  * could break a test output parser. To that end I am setting the failbit on cout any time we expect output
  * through that stream. Afterwards, I set the goodbit in order to revert this.
+ *
+ * @author Jordan Sebastian
  */
 #include "gtest/gtest.h"
 #include "src/main.hpp"

@@ -1,3 +1,12 @@
+/**
+ * @file TestConstants.cpp
+ *
+ * Some constants that we will use in multiple tests.
+ *
+ * @note this is not an actual test file.
+ *
+ * @author Jordan Sebastian
+ */
 #include <vector>
 #include "src/Point.hpp"
 

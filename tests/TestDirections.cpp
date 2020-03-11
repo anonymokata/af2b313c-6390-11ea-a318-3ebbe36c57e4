@@ -1,6 +1,16 @@
+/**
+ * @file TestDirections
+ *
+ * Test the Direction enumeration class.
+ *
+ * @author Jordan Sebastian
+ */
 #include "src/Direction.hpp"
 #include "gtest/gtest.h"
 
+/**
+ * Test that looping through the cardinal directions gives us the expected results.
+ */
 TEST(DirectionTest, TestDirectionsIncrement)
 {
     Direction dir = Direction::north;

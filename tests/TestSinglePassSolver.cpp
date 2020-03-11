@@ -1,3 +1,10 @@
+/**
+ * @file TestSinglePassSolver.cpp
+ *
+ * Test the SinglePassSolver solution.
+ *
+ * @author Jordan Sebastian
+ */
 #include "gtest/gtest.h"
 #include "src/SinglePassSolver.hpp"
 #include <algorithm>
@@ -9,6 +16,9 @@
 #include "TestConstants.hpp"
 #include "src/Direction.hpp"
 
+/**
+ * Test that we can build the constructor without an exception.
+ */
 TEST(TestSinglePass, TestBuildConstructor)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
@@ -21,6 +31,9 @@ TEST(TestSinglePass, TestBuildConstructor)
 
 }
 
+/**
+ * Test that we can find a word,given a direction and a starting spot.
+ */
 TEST(TestSinglePass, TestFindWordInDirection)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
@@ -36,6 +49,9 @@ TEST(TestSinglePass, TestFindWordInDirection)
     ASSERT_TRUE(std::equal(results.begin(), results.end(), spock_solution.begin()));
 }
 
+/**
+ * Test that we can find a word given a range of directions.
+ */
 TEST(TestSinglePass, TestFindWordInDirectionRange)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
@@ -56,6 +72,9 @@ TEST(TestSinglePass, TestFindWordInDirectionRange)
 
 }
 
+/**
+ * Test that we can find words in the grid, given only a starting spot.
+ */
 TEST(TestSinglePass, TestFindWordsInGridAtPoint)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");
@@ -72,7 +91,7 @@ TEST(TestSinglePass, TestFindWordsInGridAtPoint)
         std::string("UHURA"),
     };
 
-
+    // Spot check some of the words.
     std::vector<WordSolution> solution;
     solver.searchWordsInGridAtPoint(words, Point(1, 7), solution);
     ASSERT_EQ(solution.size(), 1);
@@ -84,6 +103,9 @@ TEST(TestSinglePass, TestFindWordsInGridAtPoint)
 
 }
 
+/**
+ * Test that we can solve the provided word search correctly.
+ */
 TEST(TestSinglePass, TestSolvePuzzle)
 {
     FileReader reader("./data/ProvidedWordSearch.txt");

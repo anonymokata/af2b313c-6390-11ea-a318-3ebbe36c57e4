@@ -1,8 +1,19 @@
+/**
+ * @file TestWordSolution.cpp
+ *
+ * Test the small logic that the WordSolution struct has associated with it.
+ *
+ * @author Jordan Sebastian
+ */
 #include "gtest/gtest.h"
 #include "src/WordSolution.hpp"
 #include <sstream>
 #include <string>
 
+/**
+ * Test that the operator overloading of the stream operator (<<), will print to the given stream
+ * the expected solution.
+ */
 TEST(TestWordSoluton, TestOuputOperator)
 {
     std::string expected("SPOCK: (2,1),(3,2),(4,3),(5,4),(6,5)");
@@ -34,5 +45,4 @@ TEST(TestWordSoluton, TestOuputOperator)
 
     ss << solution;
     ASSERT_STREQ(ss.str().c_str(), not_found.c_str());
-
 }

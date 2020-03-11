@@ -1,6 +1,10 @@
-//
-// Created by jordan on 2/29/20.
-//
+/**
+ * @file TestPoint.cpp
+ *
+ * Test our Point object.
+ *
+ * @author Jordan Sebastian
+ */
 #include "gtest/gtest.h"
 #include "src/Point.hpp"
 
@@ -65,6 +69,9 @@ TEST(PointTests, TestPointAddition)
     ASSERT_EQ(c.getY(), 5);
 }
 
+/**
+ * Test the += operator.
+ */
 TEST(PointTests, TestPointAdditionAndAssignment)
 {
     Point a(1, 1);
@@ -75,6 +82,9 @@ TEST(PointTests, TestPointAdditionAndAssignment)
     ASSERT_EQ(a.getY(), 6);
 }
 
+/**
+ * Test the equality operator (=).
+ */
 TEST(PointTests, TestPointEqualityOperatorOverride)
 {
     Point a(1, 1);
@@ -88,6 +98,9 @@ TEST(PointTests, TestPointEqualityOperatorOverride)
 
 }
 
+/**
+ * Test the != operator override.
+ */
 TEST(PointTests, TestPointNotEqualOperatorOverride)
 {
     Point a(1, 1);

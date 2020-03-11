@@ -1,7 +1,12 @@
-//
-// Created by jordan on 3/2/20.
-//
-
+/**
+ * @file TestConstants.hpp
+ *
+ * File that provides the declarations of some constants that we will use in tests.
+ *
+ * @note this is not an actual test file.
+ *
+ * @author Jordan Sebastian
+ */
 #ifndef WORDSEARCHKATA_TESTCONSTANTS_HPP
 #define WORDSEARCHKATA_TESTCONSTANTS_HPP
 
