@@ -7,22 +7,27 @@
 - [Running](#running)
    - [Unit Tests](#unit-tests)
    - [Main Application](#main-application)
+- [Description of Work](#description-of-work)
+   - [NaiveSolver](#naivesolver)
+   - [SinglePassSolver](#singlepasssolver)
+- [Future Work](#future-work)
 
 ## Building
 
 This code can be built on any C++14 compliant compiler, and with CMake version >= 3.0. 
 
 **Note**: Any time you see `$>` in an example, this represents a shell prompt. You do not
-actually type these characters. You will type everything after it.
-
+actually type these characters.
 
 ### Ubuntu 18.04
 
 **IMPORTANT**: The build path for Ubuntu 18.04 is the most tested and supported path in these 
 instructions. Stray away from them only if you must. However, as Olmec said: https://youtu.be/Bx_BlcZsVW0
 
-1. Set up an Ubuntu environment (VM or otherwise).
-   - Download is available here: https://ubuntu.com/download/desktop 
+This guide assumes that you have an Ubuntu 18.04 environment set up with git.  
+
+1. `git clone` the repository.
+1. Navigate to the newly created `WordSearchKata` directory in your current directory
 1. Run the build_ubuntu.sh script.
    - This script will automatically install any dependencies that Ubuntu is missing.
    - Example:
@@ -33,6 +38,8 @@ instructions. Stray away from them only if you must. However, as Olmec said: htt
 
 **NOTE**: This will require super-user access in order to download the dependencies via apt and 
 install them.
+
+After this is finished building see the section on [Running](#running).
 
 ### Other Linux / Darwin
 Though untested building on other linux versions, as well as Darwin (OS X) can be generally
