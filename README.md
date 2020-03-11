@@ -28,7 +28,7 @@ This guide assumes that you have an Ubuntu 18.04 environment set up with git.
 
 1. `git clone git@github.com:CyberSmash/WordSearchKata.git` the repository.
 1. Navigate to the newly created `WordSearchKata` directory in your current directory
-1. Run the build_ubuntu.sh script.
+1. Run the `build_ubuntu.sh` script.
    - This script will automatically install any dependencies that Ubuntu is missing.
    - Example:
    
@@ -133,7 +133,8 @@ It's possible that I could even improve upon the speed of the Naive solution to 
 to be better than that of the SinglePassSolver. However, the whole point is that it's a Naive solution,
 and so I couldn't determine how best to approach that problem, without making it less Naive.
 
-Regardless, both solutions exist in the code base.
+Regardless, both solutions exist in the code base, but only the SinglePassSolver solution is 
+executed by main.
 
 ## Future Work
 
@@ -159,3 +160,9 @@ was just one more thing to go wrong if a recursive clone on the repo wasn't exec
 in the newest versions of C++. However, for this program they didn't appear to be warranted, and in
 the few places that they may have been, I felt they lead to solutions that were unreadable and provided
 little benefit otherwise.
+
+- Another idea for a solution that could be implemented. One where the grid is preprocessed
+by creating strings all rows, all columns and all diagonals, both forward and back. At
+this point, the problem becomes just a few string searches. This solution would have a higher
+memory requirement, and the preprocessing would take some amount of time. It's not clear to if 
+all of that together would be faster but the searching itself very likely would be faster.
