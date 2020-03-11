@@ -118,9 +118,9 @@ However, due to the SinglePassSolver's algorithm, we only have to check east, so
 and south west. All other cardinal points would have revealed a solution at some other point we have
 previously seen.
 
-This was supposed to be faster, however when running performance tests on the main `solve` function, 
-it was revealed that this solution is only just barely faster, if at all. Each solution 
-solves the problem in roughly the same amount of time (+- 10 microseconds).
+This method is somewhat faster. In tests involving 10000 calls to the function solve for both
+the NaiveSolver and the SinglePassSolver, the SinglePassSolver was able to solve the puzzle 
+in an average of 26 microseconds, compared to 63 microseconds for the Naive solution.
 
 It's possible that I could even improve upon the speed of the Naive solution to improve its performance
 to be better than that of the SinglePassSolver. However, the whole point is that it's a Naive solution,
@@ -148,7 +148,7 @@ writing the generic version may be warranted.
 this is the way the documentation recommends. I could have also included it as a submodule, but that
 was just one more thing to go wrong if a recursive clone on the repo wasn't executed.
 
-- I'm pretty certian that there are awesome tricks that one can use with templating, and meta programming
+- I'm pretty certain that there are awesome tricks that one can use with templating, and meta programming
 in the newest versions of C++. However, for this program they didn't appear to be warranted, and in
 the few places that they may have been, I felt they lead to solutions that were unreadable and provided
 little benefit otherwise.
